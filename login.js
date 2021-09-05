@@ -16,6 +16,7 @@ const loginSubmit = function ( event ) {
     event.preventDefault();
     
     window.localStorage.setItem( OWNER_NAME_KEY, input );
+    login_box.classList.add( HIDDEN_CLASS );
     greeter( input );
 }
 
