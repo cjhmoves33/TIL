@@ -1,3 +1,7 @@
 :root {
   --layer-color: rgba(88, 124, 250, 0.8);
 }
+
+.hidden {
+  display: none;
+}

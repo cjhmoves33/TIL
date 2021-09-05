@@ -10,9 +10,16 @@
 <body>
     <div id="main-grid">
         <main class="center-display">
-            <div class="center-box">
-                main box
-                greeting & clock?
+            <div class="center-box-background">
+                <div class="center-box">
+                    <form id="login-form" class="hidden">
+                        <input required maxlength="10" type="text" placeholder="take your name" >
+                        <button >click here</button>
+                    </form>
+                    <div id="greeting" class="hidden">
+    
+                    </div>
+                </div>
             </div>
         </main>
         <aside class="to-do-list">
@@ -30,5 +37,7 @@
             </div>
         </footer>
     </div>
+
+    <script src="login.js"></script>
 </body>
 </html>
