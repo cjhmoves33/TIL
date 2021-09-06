@@ -55,6 +55,7 @@ body {
 
 #greeting {
   color: white;
+  font-size: 3.5rem;
   animation: greeting 2s;
   animation-delay: 2.3s;
   animation-fill-mode: forwards;
