@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 0 100%;
-  animation: mainBoxDrawBorder 2s;
+  animation: mainBoxDrawBorder 1s;
   animation-fill-mode: forwards;
   /* 여기서는 애니메이션효과를 지속시키는 방법을 사용함. */
 }
@@ -51,7 +51,22 @@ body {
   font-size: 2rem;
   width: 70%;
   height: 50%;
-  background-color: rgb(100, 237, 173);
+}
+
+#greeting {
+  color: white;
+  animation: greeting 2s;
+  animation-delay: 2.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes greeting {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
 }
 
 .to-do-list {
@@ -79,7 +94,8 @@ body {
   background-repeat: no-repeat;
   background-position: top center, top center;
   background-size: 0 2px, 0% 0%;
-  animation: anchorsDrawBorder 5s;
+  animation: anchorsDrawBorder 2.5s;
+
   /* 여기서는 백그라운드 컬러를 설정한 상태로 애니메이션이 끝이나면 지속하지않고 백그라운드 컬러를 보여줌 */
   /* center-display와 보이는것은 같으나 미묘한 차이가있음. */
 }

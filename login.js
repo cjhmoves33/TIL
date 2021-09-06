@@ -12,12 +12,12 @@ const greeter =function ( owner ) {
 }
 
 const loginSubmit = function ( event ) {
-    const input = login_box[0].value;
+    const owner_name = login_box[0].value;
     event.preventDefault();
     
-    window.localStorage.setItem( OWNER_NAME_KEY, input );
+    window.localStorage.setItem( OWNER_NAME_KEY, owner_name );
     login_box.classList.add( HIDDEN_CLASS );
-    greeter( input );
+    greeter( owner_name );
 }
 
 if ( !owner ) {
