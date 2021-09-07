@@ -82,6 +82,8 @@ body {
   color: rgb(248, 249, 250);
   text-align: center;
   font-size: 3.5rem;
+  border-radius: 10px;
+  padding: 0 1rem;
   animation: greeting 1.1s;
   animation-delay: 1.3s;
   animation-fill-mode: forwards;
