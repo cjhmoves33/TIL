@@ -22,7 +22,7 @@ body {
   grid-column: 2 / 3;
   /* background-color: var(--layer-color); */
   /* background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMqPl1BgAFngKc/QnOCQAAAABJRU5ErkJggg=="); */
-  background: linear-gradient(0deg, #1e71f5, #3cdee7);
+  background: linear-gradient(0deg, var(--layer-color), var(--layer-color2));
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 0 100%;
@@ -58,11 +58,14 @@ body {
   height: 50%;
 }
 
+.center-box > * {
+  border-radius: 10px;
+}
+
 #login-form > input {
   width: 40vw;
   height: 10vh;
   font-size: 7vh;
-  border-radius: 10px;
   border: none;
   outline: none;
   transition: box-shadow 1s;
@@ -80,37 +83,46 @@ body {
 }
 
 #greeting {
-  color: black;
+  background: linear-gradient(0deg, var(--layer-color), var(--layer-color2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
-  font-size: 3.5rem;
-  border-radius: 10px;
-  padding: 0 1rem;
-  animation: greeting 3s;
+  font-size: 3.4rem;
+  padding: 1rem;
+  animation: greeting 5s;
   /* animation-delay: 1.3s; */
   /* animation-fill-mode: forwards; */
 }
 
 @keyframes greeting {
   0% {
-    color: rgb(248, 249, 250);
+    font-size: 0;
     box-shadow: 0 0 0 0;
   }
-  40% {
-    color: rgb(248, 249, 250);
+  25% {
+    font-size: 0;
     box-shadow: 0 0 0 0;
   }
-  70% {
-    color: black;
-    box-shadow: 0 0 0 0;
+  32% {
+    font-size: 3.5rem;
+    box-shadow: -5px -5px 0px -10px var(--layer-color),
+      5px 5px 0px -10px var(--layer-color2);
   }
-  85% {
-    color: black;
-    box-shadow: -5px -5px 30px rgb(248, 249, 250), 5px 5px 30px #aeaec040;
+  38% {
+    font-size: 3.6rem;
+    box-shadow: -5px -5px 30px -10px var(--layer-color),
+      5px 5px 30px -10px var(--layer-color2);
+  }
+  48% {
+    font-size: 3.4rem;
+    box-shadow: -5px -5px 50px 10px rgb(248, 249, 250),
+      5px 5px 50px 10px rgb(248, 249, 250);
   }
   100% {
-    color: black;
-    box-shadow: -5px 15px 30px 60px rgb(248, 249, 250),
-      -5px 15px 30px rgb(248, 249, 250);
+    font-size: 3.4rem;
+    box-shadow: -5px -5px 50px 10px rgb(248, 249, 250),
+      5px 5px 50px 10px rgb(248, 249, 250);
   }
 }
 
@@ -138,7 +150,7 @@ body {
   /* background-color: var(--layer-color); */
   /* background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMqPl1BgAFngKc/QnOCQAAAABJRU5ErkJggg=="),
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="); */
-  background: linear-gradient(90deg, #1e71f5, #3cdee7);
+  background: linear-gradient(90deg, var(--layer-color), var(--layer-color2));
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% 2px;

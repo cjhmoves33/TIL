@@ -1,5 +1,6 @@
 :root {
-  --layer-color: rgba(88, 124, 250, 0.8);
+  --layer-color: #1e71f5;
+  --layer-color2: #3cdee7;
   font-family: "Ubuntu", sans-serif;
 }
 

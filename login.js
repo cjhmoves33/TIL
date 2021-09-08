@@ -8,7 +8,7 @@ const OWNER_NAME_KEY = 'ownerName';
 
 const greeter =function ( owner ) {
     greeting.classList.remove( HIDDEN_CLASS );
-    greeting.innerText = `Hello ${ owner }`;
+    greeting.innerHTML = `☀️ Hola! ☀️<br> ${ owner }!`;
 }
 
 const loginSubmit = function ( event ) {
