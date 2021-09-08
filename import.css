@@ -3,4 +3,8 @@
 @import "my-tab.css";
 
 /* font */
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Josefin+Sans&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:500&display=swap");

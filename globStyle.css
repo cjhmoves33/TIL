@@ -1,6 +1,6 @@
 :root {
   --layer-color: rgba(88, 124, 250, 0.8);
-  font-family: "Nanum Gothic Coding", monospace;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .hidden {
