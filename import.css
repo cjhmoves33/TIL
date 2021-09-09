@@ -1,6 +1,9 @@
 /* path */
-@import "globStyle.css";
-@import "my-tab.css";
+@import "styles/globStyle.css";
+@import "styles/center.css";
+@import "styles/right.css";
+@import "styles/left.css";
+@import "styles/floor.css";
 
 /* font */
 /* @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");

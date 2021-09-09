@@ -1,0 +1,8 @@
+/* left */
+.to-do-list {
+  background-color: rgb(248, 249, 250);
+  display: flex;
+  order: -1;
+  grid-row: span 1;
+  grid-column: 1 / 2;
+}
