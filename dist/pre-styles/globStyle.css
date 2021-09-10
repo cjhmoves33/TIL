@@ -1,0 +1,11 @@
+:root {
+  --layer-color: #1e71f5;
+  --layer-color2: #3cdee7;
+  --blue: #0ff;
+  --violet: rgb(234, 0, 255);
+  font-family: poppins;
+}
+
+.hidden {
+  display: none;
+}

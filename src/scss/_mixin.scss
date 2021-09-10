@@ -1,0 +1,20 @@
+// @mixin font-design($color) {
+//   font-size: 2rem;
+//   letter-spacing: 1rem;
+//   color: $color;
+// }
+
+// @mixin nanis-color($oddEven) {
+//   display: block;
+//   letter-spacing: 1rem;
+//   font-size: 2rem;
+//   margin-bottom: 20px;
+
+//   @if ($oddEven == "odd") {
+//     color: $darkBlue;
+//   } @else if ($oddEven == "even") {
+//     color: red;
+//   } @else {
+//     color: rgb(0, 255, 157);
+//   }
+// }
