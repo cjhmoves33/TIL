@@ -1,0 +1,9 @@
+/* scss 전에 작업했던 파일들 */
+@import "../pre-styles/center.css";
+@import "../pre-styles/floor.css";
+@import "../pre-styles/globStyle.css";
+@import "../pre-styles/left.css";
+@import "../pre-styles/right.css";
+
+/* 폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
