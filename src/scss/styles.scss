@@ -1,2 +1,76 @@
+// scss
 @import "_vars.scss";
 @import "_mixin.scss";
+
+// css
+@import "../pre-styles/center.css";
+@import "../pre-styles/floor.css";
+@import "../pre-styles/globStyle.css";
+@import "../pre-styles/left.css";
+@import "../pre-styles/right.css";
+
+// font
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
+
+// gallery
+
+// shining ball
+.shining-ball-back {
+  background-color: rgba(173, 184, 195, 0.5);
+}
+
+#shining-ball {
+  background-color: rgb(248, 249, 250);
+  height: 8rem;
+  border-radius: 50%;
+  box-shadow: inset 1em 0 2em -1em var(--blue),
+    inset -1px 0 2em -1em var(--violet), inset 2em 0 4em -2em var(--blue),
+    inset -2px 0 4em -2em var(--violet), 0 0 0.1em #fff, 0 0 0.6em #fff,
+    -1em 0 3em -1em var(--blue), 1px 0 3em -1em var(--violet),
+    -2em 0 3em -1em var(--blue), 2px 0 3em -1em var(--violet);
+
+  animation: spin 3s linear infinite;
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// twittler
+#twittler {
+  display: flex;
+  flex-direction: column;
+  //   justify-content: space-around;
+  align-items: center;
+  background-color: #ecf0f3;
+  padding: 1rem 2rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: -7px -7px 10px white, 7px 7px 10px #cbced1;
+
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  #twittler-logo {
+    background: url("https://img.icons8.com/color/100/000000/twitter--v2.png");
+    background-size: cover;
+    width: 60%;
+    height: 30%;
+    border-radius: 50%;
+    box-shadow: -7px -7px 10px white, 7px 7px 10px #cbced1;
+  }
+
+  #twittler-title {
+    color: $twittlerTitle;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+  }
+}

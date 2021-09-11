@@ -1,9 +1,1 @@
-/* scss 전에 작업했던 파일들 */
-@import "../pre-styles/center.css";
-@import "../pre-styles/floor.css";
-@import "../pre-styles/globStyle.css";
-@import "../pre-styles/left.css";
-@import "../pre-styles/right.css";
-
-/* 폰트 */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
+@import url(../pre-styles/center.css);@import url(../pre-styles/floor.css);@import url(../pre-styles/globStyle.css);@import url(../pre-styles/left.css);@import url(../pre-styles/right.css);@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap);@-webkit-keyframes spin{to{transform:rotate(360deg)}}@keyframes spin{to{transform:rotate(360deg)}}.shining-ball-back{background-color:rgba(173,184,195,.5)}#shining-ball{background-color:#f8f9fa;height:8rem;border-radius:50%;box-shadow:inset 1em 0 2em -1em var(--blue),inset -1px 0 2em -1em var(--violet),inset 2em 0 4em -2em var(--blue),inset -2px 0 4em -2em var(--violet),0 0 .1em #fff,0 0 .6em #fff,-1em 0 3em -1em var(--blue),1px 0 3em -1em var(--violet),-2em 0 3em -1em var(--blue),2px 0 3em -1em var(--violet);-webkit-animation:spin 3s linear infinite;animation:spin 3s linear infinite}#twittler{display:flex;flex-direction:column;align-items:center;background-color:#ecf0f3;padding:1rem 2rem;height:100%;width:100%;border-radius:2rem;box-shadow:-7px -7px 10px #fff,7px 7px 10px #cbced1}#twittler>*{margin-bottom:1rem}#twittler #twittler-logo{background:url(https://img.icons8.com/color/100/000000/twitter--v2.png);background-size:cover;width:60%;height:30%;border-radius:50%;box-shadow:-7px -7px 10px #fff,7px 7px 10px #cbced1}#twittler #twittler-title{color:#50b0ff;font-size:30px;font-weight:700}#twittler .input{display:flex;flex-direction:column}

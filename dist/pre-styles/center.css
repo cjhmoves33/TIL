@@ -11,7 +11,7 @@ body {
   display: grid;
   height: 100%;
   /* 1fr 3fr 1fr */
-  grid-template-columns: minmax(200px, 1fr) minmax(500px, 3fr) minmax(
+  grid-template-columns: minmax(3rem, 5rem) minmax(500px, 3fr) minmax(
       200px,
       1fr
     );
