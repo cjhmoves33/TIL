@@ -2,6 +2,7 @@
   "name": "scss-masterclass",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "https://github.com/nomadcoders/scss-masterclass",
   "author": "Nicolás Serrano Arévalo <itnico.las.me@gmail.com>",
   "license": "MIT",

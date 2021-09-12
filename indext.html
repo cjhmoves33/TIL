@@ -37,17 +37,16 @@
                     <div id="twittler-logo"></div>
                     <div id="twittler-title">TWITTLER</div>
 
-                    <div id="twittler-email" class="input">
+                    <form class="input">
                         <label>email</label>
                         <input type="email" placeholder="abc@domain.com" required>
-                    </div>
-                    <div id="twittler-password" class="input">
+
                         <label>password</label>
                         <input type="password" placeholder="min 6character long" required minlength="6" maxlength="15">
-                    </div>
-                    <div id="twittler-login" class="input">
-                        <button type="submit">LOG IN</button>
-                    </div>
+
+                        <input type="submit" value="LOG IN">
+                    </form>
+                    
                 </div>
             </div>
 
@@ -64,6 +63,6 @@
         </footer>
     </div>
 
-    <script src="login.js"></script>
+    <script type="module" src="./javascripts/main.js"></script>
 </body>
 </html>
