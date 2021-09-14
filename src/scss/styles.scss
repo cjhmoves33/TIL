@@ -107,3 +107,23 @@
     }
   }
 }
+
+//groovy
+
+#groovy-background {
+  background: $groovy-color4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#groovy-background > h1 {
+  font-family: "Shrikhand", cursive;
+  font-weight: bold;
+  font-size: 3rem;
+  color: $groovy-color2;
+  @include shadow($groovy-color1);
+  animation: color 2s ease-in infinite;
+}
