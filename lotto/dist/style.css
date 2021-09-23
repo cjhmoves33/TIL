@@ -1,0 +1,14 @@
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./ball.scss ***!
+  \****************************************************************************************************/
+.ball {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 20px;
+}
