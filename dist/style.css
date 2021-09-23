@@ -1,0 +1,137 @@
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./mainTap.scss ***!
+  \*******************************************************************************************************/
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+#main-grid {
+  display: grid;
+  height: 100%;
+  /* 1fr 3fr 1fr */
+  grid-template-columns: minmax(3rem, 5rem) minmax(40rem, 3fr) minmax(20rem, 1fr);
+  grid-template-rows: minmax(20rem, 3fr) minmax(5rem, 1fr);
+}
+
+/* center */
+.center-display {
+  display: flex;
+  justify-content: center;
+  padding: 0 2px 0 2px;
+  grid-row: span 1;
+  grid-column: 2/3;
+  /* background-color: var(--layer-color); */
+  /* background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMqPl1BgAFngKc/QnOCQAAAABJRU5ErkJggg=="); */
+  background: linear-gradient(0deg, var(--layer-color), var(--layer-color2));
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 0 100%;
+  animation: mainBoxDrawBorder 1s;
+  animation-fill-mode: forwards;
+  /* 여기서는 애니메이션효과를 지속시키는 방법을 사용함. */
+}
+
+@keyframes mainBoxDrawBorder {
+  0% {
+    background-size: 100% 0;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+.center-box-background {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 70%;
+  height: 50%;
+}
+
+.center-box > * {
+  border-radius: 10px;
+}
+
+#greeting {
+  background: linear-gradient(0deg, var(--layer-color), var(--layer-color2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 3.4rem;
+  padding: 1rem;
+  animation: greeting 5s;
+  /* animation-delay: 1.3s; */
+  /* animation-fill-mode: forwards; */
+}
+
+@keyframes greeting {
+  0% {
+    font-size: 0;
+    box-shadow: 0 0 0 0;
+  }
+  25% {
+    font-size: 0;
+    box-shadow: 0 0 0 0;
+  }
+  32% {
+    font-size: 3.5rem;
+    box-shadow: -5px -5px 0px -10px var(--layer-color), 5px 5px 0px -10px var(--layer-color2);
+  }
+  38% {
+    font-size: 3.6rem;
+    box-shadow: -5px -5px 30px -10px var(--layer-color), 5px 5px 30px -10px var(--layer-color2);
+  }
+  48% {
+    font-size: 3.4rem;
+    box-shadow: -5px -5px 50px 10px #f8f9fa, 5px 5px 50px 10px #f8f9fa;
+  }
+  100% {
+    font-size: 3.4rem;
+    box-shadow: -5px -5px 50px 10px #f8f9fa, 5px 5px 50px 10px #f8f9fa;
+  }
+}
+.anchors-display {
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+  grid-row: 2;
+  grid-column: 1/-1;
+  /* background-color: var(--layer-color); */
+  /* background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMqPl1BgAFngKc/QnOCQAAAABJRU5ErkJggg=="),
+  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="); */
+  background: linear-gradient(90deg, var(--layer-color), var(--layer-color2));
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% 2px;
+  animation: anchorsDrawBorder 2.5s;
+  /* 여기서는 백그라운드 컬러를 설정한 상태로 애니메이션이 끝이나면 지속하지않고 백그라운드 컬러를 보여줌 */
+  /* center-display와 보이는것은 같으나 미묘한 차이가있음. */
+}
+
+@keyframes anchorsDrawBorder {
+  0% {
+    background-size: 0 2px;
+  }
+  40% {
+    background-size: 0 2px;
+  }
+  100% {
+    background-size: 100% 2px;
+  }
+}
