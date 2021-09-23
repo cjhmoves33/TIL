@@ -1,0 +1,18 @@
+#response-check-screen {
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  user-select: none;
+
+  &.waiting {
+    background-color: aquamarine;
+  }
+
+  &.ready {
+    background-color: tomato;
+  }
+
+  &.now {
+    background-color: yellowgreen;
+  }
+}
