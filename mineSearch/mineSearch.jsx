@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useMemo } from 'react';
+import React, { useEffect, useReducer, createContext, useMemo } from 'react';
 import Table from './src/table';
 import Form from './src/form';
 
@@ -16,8 +16,11 @@ export const CODE = {
 const initialState = {
   tableData: [],
   timer: 0,
-  result: '',
-  gameOver: false
+  result: false,
+  gameOver: true,
+  openedCount: 0,
+  complete: 0,
+  checked: []
 };
 
 const plantMine = (row, col, mine) => {
@@ -52,8 +55,10 @@ export const CLICK_MINE = 'CLICK_MINE';
 export const FLAG_CELL = 'FLAG_CELL';
 export const QUESTION_CELL = 'QUESTION_CELL';
 export const NORMALIZE_CELL = 'NORMALIZE_CELL';
+export const INCREMENT_TIMER = 'INCREMENT_TIMER';
 
 const reducer = (state, action) => {
+  const { openedCount, complete, checked, timer } = state;
   const { type, row, col, quantityOfMine } = action;
   const tableData = [...state.tableData];
 
@@ -62,19 +67,25 @@ const reducer = (state, action) => {
       return {
         ...state,
         tableData: plantMine(row, col, quantityOfMine),
-        gameOver: false
+        timer: 0,
+        result: '',
+        gameOver: false,
+        openedCount: 0,
+        complete: row * col - quantityOfMine,
+        checked: []
       }
     case OPEN_CELL: {
       tableData.forEach( (row, idx) => tableData[idx] = [...state.tableData[idx]] );
-      let checked = [];
+      let check = [...checked];
+      let counter = openedCount;
 
       const checkAround = (row, col) => {
-        if (!tableData[row]) { return; }
-        if (!tableData[col]) { return; }
-        if (checked.includes(`${row},${col}`)) { return; }
-        checked.push(`${row},${col}`);
+        if ( !(tableData[row] && tableData[col]) ) { return; }
+        if ( check.includes(`${row},${col}`) ) { return; }
+        check.push(`${row},${col}`);
+        counter++;
 
-        let around = [];
+        const around = [];
         if (tableData[row - 1]) {
           around.push(tableData[row - 1][col - 1]);
           around.push(tableData[row - 1][col]);
@@ -101,12 +112,27 @@ const reducer = (state, action) => {
         }
       }
 
-      checkAround(row, col)
-    
-      return {
-        ...state,
-        tableData,
+      checkAround(row, col);
+
+      if(counter === complete) {
+        return {
+          ...state,
+          tableData,
+          openedCount: counter,
+          checked: check,
+          gameOver: true,
+          result: 'WIN',
+
+        }
+      } else {
+        return {
+          ...state,
+          tableData,
+          checked: check,
+          openedCount: counter,
+        }
       }
+      
     }
     case CLICK_MINE: {
       tableData[row] = [...state.tableData[row]];
@@ -115,6 +141,7 @@ const reducer = (state, action) => {
         ...state,
         tableData,
         gameOver: true,
+        result: 'BOOM!'
       }
     }
     case FLAG_CELL: {
@@ -153,6 +180,13 @@ const reducer = (state, action) => {
         tableData
       }
     }
+    case INCREMENT_TIMER: {
+      return {
+        ...state,
+        timer: timer + 1
+      }
+    }
+
     default:
       return state;
   }
@@ -162,15 +196,27 @@ export const TableContext = createContext();
 
 const MineSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { tableData, gameOver } = state;
-  const value = useMemo(() => ({ tableData, dispatch, gameOver }), [tableData]);
+  const { tableData, gameOver, result, timer } = state;
+  const value = useMemo(() => ({ tableData, dispatch, gameOver, result }), [tableData]);
+
+  useEffect( () => {
+    let timer;
+    if (gameOver === false) {
+      timer = setInterval(() => {
+        dispatch({ type: INCREMENT_TIMER });
+      }, 1000)
+    }
+    return () => {
+      clearInterval(timer)
+    }
+  }, [gameOver])
   
   return (
     <TableContext.Provider value={value}>
       <Form />
-      <div>{state.timer}</div>
+      <div>{timer}</div>
       <Table />
-      <div>{state.result}</div>
+      <div>{result}</div>
     </TableContext.Provider>
   )
 }

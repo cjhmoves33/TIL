@@ -62,11 +62,11 @@ const getTdText = (code) => {
 
 const Td = ({ row, col }) => {
 
-  const { tableData, dispatch, gameOver } = useContext(TableContext);
+  const { tableData, dispatch, gameOver, result } = useContext(TableContext);
   const thisCell = tableData[row][col];
 
   const onClickTd = useCallback( () => {
-    if( gameOver ) { return; }
+    if( gameOver || result ) { return; }
 
     switch (thisCell) {
       case CODE.NORMAL:
@@ -80,11 +80,11 @@ const Td = ({ row, col }) => {
       default:
         return ;
     }
-  }, [thisCell, gameOver])
+  }, [thisCell, gameOver, result])
 
   const onRightClickTd = useCallback( (e) => {
     e.preventDefault();
-    if( gameOver ) { return; }
+    if( gameOver || result ) { return; }
 
     switch (thisCell) {
       case CODE.NORMAL:
@@ -105,7 +105,7 @@ const Td = ({ row, col }) => {
       default:
         return ;
     }
-  }, [thisCell, gameOver])
+  }, [thisCell, gameOver, result])
 
   return (
     
