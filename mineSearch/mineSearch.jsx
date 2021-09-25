@@ -13,12 +13,11 @@ export const CODE = {
   OPENED: 0,
 };
 
-export const TableContext = createContext();
-
 const initialState = {
   tableData: [],
   timer: 0,
-  result: ''
+  result: '',
+  gameOver: false
 };
 
 const plantMine = (row, col, mine) => {
@@ -48,22 +47,89 @@ const plantMine = (row, col, mine) => {
 };
 
 export const START_GAME = 'START_GAME';
+export const OPEN_CELL = 'OPEN_CELL';
+export const CLICK_MINE = 'CLICK_MINE';
+export const FLAG_CELL = 'FLAG_CELL';
+export const QUESTION_CELL = 'QUESTION_CELL';
+export const NORMALIZE_CELL = 'NORMALIZE_CELL';
 
 const reducer = (state, action) => {
-  switch(action.type) {
-    case START_GAME: 
+  const { type, row, col, quantityOfMine } = action;
+
+  const tableData = [];
+
+  switch(type) {
+    case START_GAME:
       return {
         ...state,
-        tableData: plantMine(action.row, action.col, action.quantityOfMine)
+        tableData: plantMine(row, col, quantityOfMine),
+        gameOver: false
       }
+    case OPEN_CELL: {
+      tableData[row] = [...state.tableData[row]];
+      tableData[row][col] = CODE.OPENED;
+      
+      return {
+        ...state,
+        tableData,
+      }
+    }
+    case CLICK_MINE: {
+      tableData[row] = [...state.tableData[row]];
+      tableData[row][col] = CODE.CLICKED_MINE;
+      return {
+        ...state,
+        tableData,
+        gameOver: true,
+      }
+    }
+    case FLAG_CELL: {
+      tableData[row] = [...state.tableData[row]];
+      if(tableData[row][col] === CODE.MINE) {
+        tableData[row][col] = CODE.FLAG_MINE;
+      } else {
+        tableData[row][col] = CODE.FLAG;
+      }
+      return {
+        ...state,
+        tableData
+      }
+    }
+    case QUESTION_CELL: {
+      tableData[row] = [...state.tableData[row]];
+      if(tableData[row][col] === CODE.FLAG_MINE) {
+        tableData[row][col] = CODE.QUESTION_MINE;
+      } else {
+        tableData[row][col] = CODE.QUESTION;
+      }
+      return {
+        ...state,
+        tableData
+      }
+    }
+    case NORMALIZE_CELL: {
+      tableData[row] = [...state.tableData[row]];
+      if(tableData[row][col] === CODE.QUESTION_MINE) {
+        tableData[row][col] = CODE.MINE;
+      } else {
+        tableData[row][col] = CODE.NORMAL;
+      }
+      return {
+        ...state,
+        tableData
+      }
+    }
     default:
       return state;
   }
 };
 
+export const TableContext = createContext();
+
 const MineSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const value = useMemo(() => ({ tableData: state.tableData, dispatch }), [state.tableData]);
+  const { tableData, gameOver } = state;
+  const value = useMemo(() => ({ tableData, dispatch, gameOver }), [tableData]);
 
   return (
     <TableContext.Provider value={value}>

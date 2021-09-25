@@ -9,21 +9,21 @@ const Form = () => {
   const { dispatch } = useContext(TableContext);
 
   const onChangeRow = useCallback((e)=> {
-    setRow(e.target.row);
+    setRow(e.target.value);
   }, []);
 
   const onChangeColumns = useCallback((e)=> {
-    setCol(e.target.row);
+    setCol(e.target.value);
   }, [])
 
   const onChangeQuantityOfMine = useCallback((e)=> {
-    setQuantityOfMine(e.target.row);
+    setQuantityOfMine(e.target.value);
   }, [])
 
   const onClickStartButton = useCallback( (e) => {
     e.preventDefault();
     dispatch({ type: START_GAME, row, col, quantityOfMine })
-  }, [])
+  }, [row, col, quantityOfMine])
 
 
   return (

@@ -6,7 +6,7 @@ import './table.scss'
 
 const Table = () => {
   const { tableData } = useContext(TableContext);
-  console.log(tableData)
+  
   return (
    <table>
      <tbody>
