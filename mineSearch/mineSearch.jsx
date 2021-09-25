@@ -55,8 +55,7 @@ export const NORMALIZE_CELL = 'NORMALIZE_CELL';
 
 const reducer = (state, action) => {
   const { type, row, col, quantityOfMine } = action;
-
-  const tableData = [];
+  const tableData = [...state.tableData];
 
   switch(type) {
     case START_GAME:
@@ -66,9 +65,44 @@ const reducer = (state, action) => {
         gameOver: false
       }
     case OPEN_CELL: {
-      tableData[row] = [...state.tableData[row]];
-      tableData[row][col] = CODE.OPENED;
-      
+      tableData.forEach( (row, idx) => tableData[idx] = [...state.tableData[idx]] );
+      let checked = [];
+
+      const checkAround = (row, col) => {
+        if (!tableData[row]) { return; }
+        if (!tableData[col]) { return; }
+        if (checked.includes(`${row},${col}`)) { return; }
+        checked.push(`${row},${col}`);
+
+        let around = [];
+        if (tableData[row - 1]) {
+          around.push(tableData[row - 1][col - 1]);
+          around.push(tableData[row - 1][col]);
+          around.push(tableData[row - 1][col + 1]);
+          
+        }
+        around.push(tableData[row][col - 1]);
+        around.push(tableData[row][col + 1]);
+        
+        if (tableData[row + 1]) {
+          around.push(tableData[row + 1][col - 1]);
+          around.push(tableData[row + 1][col]);
+          around.push(tableData[row + 1][col + 1]);
+
+        }
+
+        const count = around.filter( (v) => [CODE.MINE, CODE.QUESTION_MINE, CODE.FLAG_MINE].includes(v) ).length;
+        tableData[row][col] = count;
+        if(count === 0) {
+          checkAround(row - 1, col);
+          checkAround(row, col - 1);
+          checkAround(row, col + 1);
+          checkAround(row + 1, col);
+        }
+      }
+
+      checkAround(row, col)
+    
       return {
         ...state,
         tableData,
@@ -130,7 +164,7 @@ const MineSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { tableData, gameOver } = state;
   const value = useMemo(() => ({ tableData, dispatch, gameOver }), [tableData]);
-
+  
   return (
     <TableContext.Provider value={value}>
       <Form />

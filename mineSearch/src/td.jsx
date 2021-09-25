@@ -10,6 +10,7 @@ const getStyle = (code) => {
       };
 
     case CODE.OPENED:
+    case code <= 1:
     case CODE.CLICKED_MINE:
       return {
         background: 'white',
@@ -37,6 +38,7 @@ const getStyle = (code) => {
 const getTdText = (code) => {
   switch(code) {
     case CODE.NORMAL:
+    case CODE.OPENED:
       return '';
 
     case CODE.MINE:
@@ -52,9 +54,9 @@ const getTdText = (code) => {
     case CODE.QUESTION_MINE:
     case CODE.QUESTION:
       return '?';
-      
+
     default:
-      return '';
+      return code;
   }
 }
 
@@ -106,6 +108,7 @@ const Td = ({ row, col }) => {
   }, [thisCell, gameOver])
 
   return (
+    
     <td
     style={getStyle(thisCell)}
     onClick={onClickTd}
