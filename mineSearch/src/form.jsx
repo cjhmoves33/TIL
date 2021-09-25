@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext, memo } from 'react';
 import { TableContext } from '../mineSearch';
 import { START_GAME } from '../mineSearch';
 
@@ -25,6 +25,8 @@ const Form = () => {
     dispatch({ type: START_GAME, row, col, quantityOfMine })
   }, [row, col, quantityOfMine])
 
+  console.log('form rendering')
+
 
   return (
     <form >
@@ -36,4 +38,4 @@ const Form = () => {
   )
 }
 
-export default Form;
+export default memo(Form);

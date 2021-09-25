@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { TableContext } from '../mineSearch';
 import Tr from './tr';
 
@@ -6,7 +6,6 @@ import './table.scss'
 
 const Table = () => {
   const { tableData } = useContext(TableContext);
-  
   return (
    <table>
      <tbody>
@@ -16,4 +15,4 @@ const Table = () => {
   )
 }
 
-export default Table;
+export default memo(Table);

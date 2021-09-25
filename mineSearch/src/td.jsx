@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, memo } from 'react';
+import React, { useContext, useCallback, memo , useMemo} from 'react';
 import { TableContext, CODE, OPEN_CELL, CLICK_MINE, QUESTION_CELL, FLAG_CELL, NORMALIZE_CELL } from '../mineSearch';
 
 const getStyle = (code) => {
@@ -36,6 +36,7 @@ const getStyle = (code) => {
 };
 
 const getTdText = (code) => {
+  console.log('get td text')
   switch(code) {
     case CODE.NORMAL:
     case CODE.OPENED:
@@ -107,14 +108,14 @@ const Td = ({ row, col }) => {
     }
   }, [thisCell, gameOver, result])
 
-  return (
-    
+  console.log('td rendering');
+  return useMemo( () => (   
     <td
     style={getStyle(thisCell)}
     onClick={onClickTd}
     onContextMenu={onRightClickTd}
     >{getTdText(thisCell)}</td>
-  )
+  ), [thisCell])
 }
 
 export default memo(Td);
