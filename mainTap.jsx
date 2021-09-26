@@ -1,15 +1,21 @@
 import React from 'react';
 import './mainTap.scss';
+import { Switch, Route } from 'react-router';
 
-import Message from './components/message'
+// mainPage components
+import Message from './mainPage/message'
+import Button from './mainPage/button';
 
 const MainTap = () => {
   return (
     <div id="grid">
       <main className="main-section">
-        <Message />
+        <Switch>
+          <Route exact path='/' component={Message}/>
+        </Switch>
       </main>
       <footer className="buttons-section">
+        <Button />
       </footer>
     </div>
   )
