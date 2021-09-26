@@ -4,7 +4,7 @@ import './button.scss';
 const Button = () => {
 
   return (
-    <button>
+    <button className='buttons'>
       button
     </button>
   )
