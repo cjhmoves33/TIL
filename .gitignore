@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+
+.DS_*
+*.txt
+
+.vscode/
+.next/
