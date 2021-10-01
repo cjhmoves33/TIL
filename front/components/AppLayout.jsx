@@ -6,16 +6,24 @@ import PropTypes from 'prop-types';
 // next는 자체적인 router가 있다.
 import Link from 'next/link';
 
+import { Menu } from 'antd';
+// import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+
+
 const AppLayout = ({ children }) => {
   return (
-    <div>
-      <div>
+    <Menu mode='horizontal'>
+      <Menu.Item eventKey='1'>
         <Link href='/'>노드버드</Link>
+      </Menu.Item>
+      <Menu.Item eventKey='2'>
         <Link href='/profile'>profile</Link>
+      </Menu.Item>
+      <Menu.Item eventKey='3'>
         <Link href='/signup'>sign up</Link>
-      </div>
+      </Menu.Item>
       {children}
-    </div>
+    </Menu>
   )
 }
 

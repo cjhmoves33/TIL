@@ -8,7 +8,6 @@
 
 // eslint를 적용하고나면 import React를 안한거에 대해 빨간줄이 생기는데 .eslint의 rules 설정에서 해결가능.
 // "react/react-in-jsx-scope": "off" 입력
-// dadadd
 
 import AppLayout from '../components/AppLayout';
 
