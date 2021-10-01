@@ -6,12 +6,18 @@
 
 // import React from 'react';
 import AppLayout from '../components/AppLayout';
+import Head from 'next/head';
 
 const SignUp = () => {
   return (
-    <AppLayout>
-      <div>Sign Up Page</div>
-    </AppLayout>
+    <>
+      <Head>
+        <title>sign up || node bird</title>
+      </Head>
+      <AppLayout>
+        <div>Sign Up Page</div>
+      </AppLayout>
+    </>
   );
 }
 

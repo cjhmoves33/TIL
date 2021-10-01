@@ -10,12 +10,18 @@
 // "react/react-in-jsx-scope": "off" 입력
 
 import AppLayout from '../components/AppLayout';
+import Head from 'next/head';
 
 const Home = () => {
   return (
-    <AppLayout>
-      <div>Hello, Next v11 </div>
-    </AppLayout>
+    <>
+      <Head>
+        <title>node bird</title>
+      </Head>
+      <AppLayout>
+        <div>Hello, Next v11 </div>
+      </AppLayout>
+    </>
   )
 }
 

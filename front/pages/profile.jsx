@@ -6,12 +6,29 @@
 
 // import React from 'react';
 import AppLayout from '../components/AppLayout';
+import Head from 'next/head';
+
+import NicknameEditForm from '../components/NicknameEditForm';
+import FollowList from '../components/FollowList';
+
+// 사용할 컴포넌트를 크게 미리 만들어 두고 작은 부분들을 코딩해 나간다.
 
 const Profile = () => {
+  // dummy data
+  const followingList = [{ nickname: 'bok' }, { nickname: 'vung' }, { nickname: 'lee bok' },];
+  const followerList = [{ nickname: 'bok' }, { nickname: 'vung' }, { nickname: 'lee bok' },];
+
   return (
-    <AppLayout>
-      <div> my profile</div>
-    </AppLayout>
+    <>
+      <Head>
+        <title>my profile || node bird</title>
+      </Head>
+      <AppLayout>
+        <NicknameEditForm />
+        <FollowList header='팔로잉 목록' data={followingList}/>
+        <FollowList header='팔로워 목록' data={followerList}/>
+      </AppLayout>
+    </>
   );
 }
 
