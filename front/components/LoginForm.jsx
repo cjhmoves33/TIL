@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types'
-
 import { Form, Input, Button, Checkbox } from 'antd'
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import PropTypes from 'prop-types'
 import Link from 'next/link';
+
 import styled from 'styled-components';
+
+import useInput from '../hooks/useInput';
+import inputRules from '../hooks/inputRules';
 
 // styled components를 사용해야하는 이유중 하나는 리렌더링 문제에 있다.
 // 이벤트 함수를 useCallback으로 감싸주는 이유와 비슷하게 이 컴포넌트가 렌더링될 때 마다 컴포넌트에 inline으로 쓰여진 style속성을 새로운객체로 인식하고
@@ -21,13 +24,9 @@ const LoginFormWrapper = styled(Form)`
 `;
 
 const LoginForm = ({ setIsLoggedIn }) => {
-  
-  
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onChangeId = useCallback( e => setId(e.target.value), [] );
-  const onChangePassword = useCallback( e => setPassword(e.target.value), [] );
+  // useInput은 커스텀 훅
+  const [id, setId] = useInput('');
+  const [password, setPassword] = useInput('');
 
   const onSubmitForm = useCallback( () => {
     // antd의 From 컴포넌트의 onFinish는 e.preventDefault가 적용되어있기 때문에 설정하면 안된다.
@@ -35,27 +34,20 @@ const LoginForm = ({ setIsLoggedIn }) => {
     setIsLoggedIn(true);
   },[id, password] );
 
-  const inputRules = useCallback( (value) =>[
-    {
-      required: true,
-      message: `please input ${value}`
-    }
-  ], [])
-
   return (
     <LoginFormWrapper onFinish={onSubmitForm}  >
-      <Form.Item name='username' rules={inputRules('username')}>
+      <Form.Item name='username' rules={inputRules()}>
         <Input 
         value={id} 
-        onChange={onChangeId} 
+        onChange={setId} 
         placeholder='ID'
         />
       </Form.Item>
-      <Form.Item rules={inputRules('password')}>
+      <Form.Item name='password'rules={inputRules()}>
         <Input 
         type='password' 
         value={password} 
-        onChange={onChangePassword} 
+        onChange={setPassword} 
         placeholder='PASSWORD'
         />
       </Form.Item>
