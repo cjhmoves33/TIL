@@ -20,35 +20,28 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <Menu mode='horizontal'>
-        <Menu.Item key='1'>
-          <Link href='/'><a>노드버드</a></Link>
-        </Menu.Item>
-        <Menu.Item key='2'>
-          <Link href='/profile'><a>profile</a></Link>
-        </Menu.Item >
-        <Menu.Item key='3'>
-          <Input.Search placeholder="search here" allowClear enterButton style={{ width: '20rem', verticalAlign: 'middle'}}/>
-        </Menu.Item>
-        <Menu.Item key='4'>
-          <Link href='/signup'><a>sign up</a></Link>
-        </Menu.Item>
+        <Menu.Item key='1'><Link href='/'><a>노드버드</a></Link></Menu.Item>
+
+        <Menu.Item key='2'><Link href='/profile'><a>profile</a></Link></Menu.Item>
+
+        <Menu.Item key='3'><Input.Search placeholder="search" allowClear enterButton style={{verticalAlign: 'middle'}}/></Menu.Item>
+
+        <Menu.Item key='4'><Link href='/signup'><a>sign up</a></Link></Menu.Item>
       </Menu>
+
       <Row gutter={8}>
         {/* gutter는 col간의 gap */}
-        <Col xs={24} sm={8} md={6}>{isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn}  /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</Col>
-        <Col xs={24} sm={12} md={12}>{children}</Col>
-        <Col xs={24} sm={6} md={6}>
+        <Col xs={24} sm={8} md={8} lg={6}>{isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn}  /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</Col>
+        <Col xs={24} sm={16} md={16} lg={12}>{children}</Col>
+        <Col xs={24} sm={24} md={24} lg={6}>
           <a href='http://www.naver.com' target='_blank' rel='noreferrer noopener'>NAVER</a>
         </Col>
       </Row>
-      
     </>
   )
 }
 
 AppLayout.propTypes = {
-  // children은 (리액트에서의)node type (DOM에서의 노드를 생각하면 편함)
-  // 사실 props.children은 노드를 가져오는 것이기 때문
   children: PropTypes.node.isRequired,
 }
 
