@@ -4,7 +4,7 @@
 // next.js가 컴포넌트와 url을 1대1 매핑을 해줌.
 // next.js는 프론트서버를 가지고 있기 때문에 라우팅, SSR을 자동으로 해준다.
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { Form, Input, Checkbox, Button} from 'antd';
 import Head from 'next/head';
 import styled from 'styled-components';
@@ -15,6 +15,10 @@ import useInput from '../hooks/useInput';
 
 const ErrorMessage = styled.div`
   color: red;
+`;
+
+const FormInput = styled(Input)`
+  width: 50%;
 `;
 
 
@@ -34,7 +38,6 @@ const SignUp = () => {
   const [ termError, setTermError ] = useState(false);
   const onChangeTerm = useCallback( e => {
     setTerm(e.target.checked);
-    setTermError(false);
   }, []);
 
   const onSignUp = useCallback( () => {
@@ -44,13 +47,12 @@ const SignUp = () => {
     if (!term) {
       return setTermError(true);
     }
-    console.log(`
-      닉네임: ${nickname}
-      아이디: ${id}
-      비밀번호: ${password}
-      비밀번호 확인: ${passwordCheck}
-    `)
   }, [password, passwordCheck, term]);
+
+  const style = useMemo( () => ({
+    marginTop: '1rem',
+    textAlign: 'center'
+  }))
 
   return (
     <>
@@ -58,22 +60,43 @@ const SignUp = () => {
         <title>sign up || node bird</title>
       </Head>
       <AppLayout>
-        <Form onFinish={onSignUp} layout='vertical'>
-
-          <Form.Item label='닉네임'>
-            <Input value={nickname} onChange={setNickname} placeholder='닉네임' required />
+        <Form onFinish={onSignUp} layout='vertical' style={style}>
+          <Form.Item >
+            <FormInput 
+            value={nickname}
+            onChange={setNickname}
+            placeholder='닉네임'
+            required
+            />
           </Form.Item>
 
-          <Form.Item label='아이디'>
-            <Input value={id} onChange={setId} placeholder='아이디' required />
+          <Form.Item >
+            <FormInput 
+            value={id}
+            onChange={setId}
+            placeholder='아이디'
+            required
+            />
           </Form.Item>
 
-          <Form.Item label='비밀번호'>
-            <Input type='password' value={password} onChange={setPassword} placeholder='패스워드' required />
+          <Form.Item >
+            <FormInput 
+            type='password'
+            value={password}
+            onChange={setPassword}
+            placeholder='패스워드'
+            required
+            />
           </Form.Item>
 
-          <Form.Item label='비밀번호 확인'>
-            <Input type='password' value={passwordCheck} onChange={onChangePasswordCheck} placeholder='패스워드 확인' required />
+          <Form.Item >
+            <FormInput 
+            type='password'
+            value={passwordCheck}
+            onChange={onChangePasswordCheck}
+            placeholder='패스워드 확인'
+            required
+            />
             {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
           </Form.Item>
 
@@ -85,7 +108,6 @@ const SignUp = () => {
           <Form.Item >
             <Button type='primary' htmlType='submit'>가입하기</Button>
           </Form.Item>
-
         </Form>
       </AppLayout>
     </>

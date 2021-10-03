@@ -2,6 +2,7 @@
 // npm i prop-types
 
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 // next는 자체적인 router가 있다.
 import Link from 'next/link';
@@ -14,7 +15,12 @@ import { Menu, Input, Row, Col } from 'antd';
 import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
 
+const SearchInput = styled(Input.Search)`
+  vertical-align: middle;
+`
+
 const AppLayout = ({ children }) => {
+  const [ userId, setUserId ] = useState('');
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   return (
@@ -24,14 +30,14 @@ const AppLayout = ({ children }) => {
 
         <Menu.Item key='2'><Link href='/profile'><a>profile</a></Link></Menu.Item>
 
-        <Menu.Item key='3'><Input.Search placeholder="search" allowClear enterButton style={{verticalAlign: 'middle'}}/></Menu.Item>
+        <Menu.Item key='3'><SearchInput placeholder="search" allowClear enterButton /></Menu.Item>
 
         <Menu.Item key='4'><Link href='/signup'><a>sign up</a></Link></Menu.Item>
       </Menu>
 
       <Row gutter={8}>
         {/* gutter는 col간의 gap */}
-        <Col xs={24} sm={8} md={8} lg={6}>{isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn}  /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</Col>
+        <Col xs={24} sm={8} md={8} lg={6}>{isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn} userId={userId} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} />}</Col>
         <Col xs={24} sm={16} md={16} lg={12}>{children}</Col>
         <Col xs={24} sm={24} md={24} lg={6}>
           <a href='http://www.naver.com' target='_blank' rel='noreferrer noopener'>NAVER</a>

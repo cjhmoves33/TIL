@@ -15,8 +15,8 @@ import FollowList from '../components/FollowList';
 
 const Profile = () => {
   // dummy data
-  const followingList = [{ nickname: 'bok' }, { nickname: 'vung' }, { nickname: 'lee' },];
-  const followerList = [{ nickname: 'bok' }, { nickname: 'vung' }, { nickname: 'lee' },];
+  const followingList = [{ nickname: 'bok' }, { nickname: 'vug' }, { nickname: 'lee' },];
+  const followerList = [{ nickname: 'bok' }, { nickname: 'buk' }, { nickname: 'lee' },];
 
   return (
     <>
