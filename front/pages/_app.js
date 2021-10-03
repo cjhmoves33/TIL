@@ -20,7 +20,8 @@ const App = ({ Component }) => {
 };
 
 App.propTypes = {
-  Component: PropTypes.func.isRequired,
+  Component: PropTypes.elementType.isRequired
 }
 
 export default App;
+// 컴포넌트의 이름은 아무 이름이나 상관없다.
