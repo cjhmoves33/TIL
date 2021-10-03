@@ -2,12 +2,12 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types'
 import { Card, Avatar, Button } from 'antd';
 
-const UserProfile = ({ setIsLoggedIn }) => {
+const UserProfile = ({ setIsLoggedIn, userId }) => {
   const onLogOut = useCallback( () => {
     setIsLoggedIn(false);
   }, [])
 
-  return (
+  return ( 
     <Card actions={[
       <div key='twit'>twit<br/>0</div>,
       <div key='follower'>follower<br/>0</div>,
@@ -16,7 +16,7 @@ const UserProfile = ({ setIsLoggedIn }) => {
     >
       <Card.Meta 
         avatar={<Avatar>Hi</Avatar>}
-        title='JaeHa'
+        title={userId}
         description='state area'
       />
       <Button onClick={onLogOut}>Log Out</Button>
@@ -26,6 +26,7 @@ const UserProfile = ({ setIsLoggedIn }) => {
 
 UserProfile.propTypes = {
   setIsLoggedIn: PropTypes.func.isRequired,
+  userId: PropTypes.string.isRequired
 }
 
 export default UserProfile;
