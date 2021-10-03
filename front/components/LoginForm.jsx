@@ -36,6 +36,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
 
   return (
     <LoginFormWrapper onFinish={onSubmitForm}  >
+
       <Form.Item name='username' rules={inputRules()}>
         <Input 
         value={id} 
@@ -43,6 +44,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
         placeholder='ID'
         />
       </Form.Item>
+
       <Form.Item name='password'rules={inputRules()}>
         <Input 
         type='password' 
@@ -51,14 +53,18 @@ const LoginForm = ({ setIsLoggedIn }) => {
         placeholder='PASSWORD'
         />
       </Form.Item>
+
       <Form.Item noStyle>
         <Checkbox>Remember id/pw</Checkbox>
+        <br/>
         <Link href='/forgot'><a>forgot id/password</a></Link>
       </Form.Item>
+
       <Form.Item >
         <LoginButton type='primary' htmlType='submit'>Log In</LoginButton>
         <Link href='/signup'><a><Button>Sign Up</Button></a></Link>
       </Form.Item>
+
     </LoginFormWrapper>
   )
 };
