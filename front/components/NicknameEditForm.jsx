@@ -2,12 +2,12 @@ import { useMemo } from 'react';
 import { Form, Input } from 'antd';
 
 const NicknameEditForm = () => {
+  
   const style = useMemo( () => ({
-    marginBottom: '2rem',
+    marginTop: '1rem',
     // borderBottom: '1px solid #d9d9d9',
-    padding: '2rem 0'
-  }, [])
-)
+  }), []
+  )
 
   // const inputStyle = useMemo( () => ({
   //   width: '20rem'
