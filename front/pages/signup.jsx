@@ -12,13 +12,14 @@ import styled from 'styled-components';
 import AppLayout from '../components/AppLayout';
 
 import useInput from '../hooks/useInput';
+import signUpLabel from '../hooks/signUpLabel';
 
 const ErrorMessage = styled.div`
   color: red;
 `;
 
 const FormInput = styled(Input)`
-  width: 50%;
+  width: 51.5%;
 `;
 
 
@@ -54,6 +55,26 @@ const SignUp = () => {
     textAlign: 'center'
   }))
 
+  const labelNickname = signUpLabel('닉네임');
+  const labelId = signUpLabel('아이디');
+  const labelPassword = signUpLabel('비밀번호');
+  const labelPasswordCheck = signUpLabel('비밀번호 확인');
+
+  const changeButtonAccess = useMemo( () => {
+    if (id && nickname && password && passwordCheck && (term === true)) {
+      return {
+        type: 'primary',
+        htmlType: 'submit'
+      }
+    } else {
+      return {
+        type: 'primary',
+        htmlType: 'submit',
+        disabled: 'disabled'
+      }
+    }
+  }, [id, nickname, password, passwordCheck, term])
+
   return (
     <>
       <Head>
@@ -61,7 +82,7 @@ const SignUp = () => {
       </Head>
       <AppLayout>
         <Form onFinish={onSignUp} layout='vertical' style={style}>
-          <Form.Item >
+          <Form.Item {...labelNickname}>
             <FormInput 
             value={nickname}
             onChange={setNickname}
@@ -70,7 +91,7 @@ const SignUp = () => {
             />
           </Form.Item>
 
-          <Form.Item >
+          <Form.Item {...labelId}>
             <FormInput 
             value={id}
             onChange={setId}
@@ -79,7 +100,7 @@ const SignUp = () => {
             />
           </Form.Item>
 
-          <Form.Item >
+          <Form.Item {...labelPassword}>
             <FormInput 
             type='password'
             value={password}
@@ -89,7 +110,7 @@ const SignUp = () => {
             />
           </Form.Item>
 
-          <Form.Item >
+          <Form.Item {...labelPasswordCheck}>
             <FormInput 
             type='password'
             value={passwordCheck}
@@ -106,7 +127,7 @@ const SignUp = () => {
           </Form.Item>
 
           <Form.Item >
-            <Button type='primary' htmlType='submit'>가입하기</Button>
+            <Button {...changeButtonAccess}>가입하기</Button>
           </Form.Item>
         </Form>
       </AppLayout>
