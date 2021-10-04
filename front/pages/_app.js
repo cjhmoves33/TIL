@@ -8,6 +8,8 @@ import Head from 'next/head'
 // 필요에 따라 각각의 컴포넌트에서 head를 수정할 수 도있다.
 import 'antd/dist/antd.css';
 
+import wrapper from '../store/configureStore';
+
 const App = ({ Component }) => {
   return (
     <>
@@ -23,5 +25,5 @@ App.propTypes = {
   Component: PropTypes.elementType.isRequired
 }
 
-export default App;
+export default wrapper.withRedux(App);
 // 컴포넌트의 이름은 아무 이름이나 상관없다.
