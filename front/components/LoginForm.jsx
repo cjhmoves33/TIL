@@ -1,11 +1,13 @@
 import { Form, Input, Button, Checkbox } from 'antd'
 import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types'
 import Link from 'next/link';
 
 import styled from 'styled-components';
 
 import useInput from '../hooks/useInput';
+import { loginAction } from '../reducers';
 
 
 // styled components를 사용해야하는 이유중 하나는 리렌더링 문제에 있다.
@@ -17,7 +19,6 @@ import useInput from '../hooks/useInput';
 const LoginFormButton = styled(Button)`
   width: 100%;
   margin-top: .5rem;
-
 `;
 
 const LoginFormWrapper = styled(Form)`
@@ -25,7 +26,7 @@ const LoginFormWrapper = styled(Form)`
 `;
 
 
-const LoginForm = ({ setIsLoggedIn, setUserId }) => {
+const LoginForm = ({ setUserId }) => {
   // useInput은 커스텀 훅
   
   const [ remember, setRemember ] = useState(true);
@@ -36,9 +37,11 @@ const LoginForm = ({ setIsLoggedIn, setUserId }) => {
   const [id, setId] = useInput('');
   const [password, setPassword] = useInput('');
 
+  const dispatch = useDispatch();
+
   const onSubmitForm = useCallback( () => {
     // antd의 From 컴포넌트의 onFinish는 e.preventDefault가 적용되어있기 때문에 설정하면 안된다.
-    setIsLoggedIn(true);
+    dispatch(loginAction(id, password))
     setUserId(id);
   },[id, password] );
 
@@ -70,7 +73,6 @@ const LoginForm = ({ setIsLoggedIn, setUserId }) => {
 };
 
 LoginForm.propTypes = {
-  setIsLoggedIn: PropTypes.func.isRequired,
   setUserId: PropTypes.func.isRequired
 }
 

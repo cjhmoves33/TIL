@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 // next는 자체적인 router가 있다.
-import Link from 'next/link';
+import Link from 'next/link'; 
+import { useSelector } from 'react-redux';
 
 import { Menu, Input, Row, Col } from 'antd';
 // css 프레임워크들은 그리드시스템(반응형, 적응형)을 지원한다. { Row, Col } from 'antd';
@@ -21,7 +22,8 @@ const SearchInput = styled(Input.Search)`
 
 const AppLayout = ({ children }) => {
   const [ userId, setUserId ] = useState('');
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  // const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  const isLoggedIn = useSelector( (state) => state.user.isLoggedIn )
 
   return (
     <>
@@ -37,7 +39,7 @@ const AppLayout = ({ children }) => {
 
       <Row gutter={8}>
         {/* gutter는 col간의 gap */}
-        <Col xs={24} sm={8} md={8} lg={6}>{isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn} userId={userId} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} />}</Col>
+        <Col xs={24} sm={8} md={8} lg={6}>{isLoggedIn ? <UserProfile userId={userId} /> : <LoginForm setUserId={setUserId} />}</Col>
         <Col xs={24} sm={16} md={16} lg={12}>{children}</Col>
         <Col xs={24} sm={24} md={24} lg={6}>
           <a href='http://www.naver.com' target='_blank' rel='noreferrer noopener'>NAVER</a>
