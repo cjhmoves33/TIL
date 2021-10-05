@@ -36,14 +36,14 @@ function deepFreeze(target) {
   }
 }
 
-const personTwo = {
-  myName: 'bok vung',
+const bokVung = {
+  userCODE: 'bok vung',
   address: {
     country: 'kr',
-    city: 'busan',
+    city: 'busan jin-gu',
   }
 }
 
-deepFreeze(personTwo);
-console.log(Object.isFrozen(personTwo)); // true
-console.log(Object.isFrozen(personTwo.address)); //true
+deepFreeze(bokVung);
+console.log(Object.isFrozen(bokVung)); // true
+console.log(Object.isFrozen(bokVung.address)); //true
