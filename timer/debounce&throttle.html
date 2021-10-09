@@ -20,6 +20,7 @@
     const debounce = (callback, delay) => {
       let timerId;
       return () => {
+        // console.log("debounce", timerId);
         if(timerId) clearTimeout(timerId);
         timerId = setTimeout(callback, delay);
       };
@@ -28,6 +29,7 @@
     const throttle = (callback, delay) => {
       let timerId;
       return () => {
+        // console.log("throttle", timerId);
         if(timerId) return;
         timerId = setTimeout( () => {
           callback();

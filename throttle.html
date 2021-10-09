@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throttle</title>
+  <style>
+    .container {
+      width: 300px;
+      height: 300px;
+      background-color: powderblue;
+      overflow: scroll;
+    }
+    .content {
+      width: 300px;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content"></div>
+  </div>
+    <div>일반 이벤트 핸들러 scroll --->>      <span class="normal">0</span></div>
+    <div>스로틀 이벤트 핸들러 scroll --->>      <span class="throttle">0</span></div>
+
+    <script>
+      const container = document.querySelector('.container');
+      const normal = document.querySelector('.normal');
+      const throttle = document.querySelector('.throttle');
+
+      let normalCount = 0;
+      let throttleCount = 0;
+
+      const throttleScroll = (callback, delay) => {
+        let timerId;
+        return () => {
+          if(timerId) return;
+          timerId = setTimeout( () => {
+          callback();
+          timerId = null;
+        }, delay);
+        }
+      }
+
+      // container.scroll = () => {
+      //   normal.textContent = +normal.textContent + 1;
+      // }
+      container.addEventListener('scroll', () => {
+        normal.textContent = ++normalCount;
+      });
+
+      container.addEventListener('scroll', throttleScroll( () => {
+        throttle.textContent = ++throttleCount;
+      }, 500));
+
+
+    </script>
+</body>
+</html>
