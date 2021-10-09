@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>click me</button>
+  <div>일반클릭 :   <span class="normal">0</span></div>
+  <div>디바운스 :   <span class="debounce">0</span></div>
+  <div>스로틀 :   <span class="throttle">0</span></div>
+  <script>
+    const btn = document.querySelector('button');
+    const normalMsg = document.querySelector('.normal');
+    const debounceMsg = document.querySelector('.debounce');
+    const throttleMsg = document.querySelector('.throttle');
+
+    const debounce = (callback, delay) => {
+      let timerId;
+      return () => {
+        if(timerId) clearTimeout(timerId);
+        timerId = setTimeout(callback, delay);
+      };
+    };
+
+    const throttle = (callback, delay) => {
+      let timerId;
+      return () => {
+        if(timerId) return;
+        timerId = setTimeout( () => {
+          callback();
+          timerId = null;
+        }, delay);
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      normalMsg.textContent = +normalMsg.textContent + 1;
+    })
+    btn.addEventListener('click', debounce( () => {
+      debounceMsg.textContent = +debounceMsg.textContent + 1;
+    }, 1000));
+    btn.addEventListener('click', throttle( () => {
+      throttleMsg.textContent = +throttleMsg.textContent + 1;
+    }, 1000));
+
+  </script>
+</body>
+</html>
