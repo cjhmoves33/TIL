@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false, 
+    "formatters": {
+        "s_fmt": {
+            "format": "%(name)s  %(levelname)s\n%(message)s",
+            "datefmt": "%Y/%m/%d - %H:%M:%S"
+        },
+        "f_fmt": {
+            "format": "%(asctime)s  %(name)s  %(levelname)s\n%(message)s",
+            "datefmt": "%Y/%m/%d - %H:%M:%S"
+        }
+    },
+    "handlers": {
+        "s_hdl": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "s_fmt"
+        },
+        "f_hdl": {
+            "class": "logging.FileHandler",
+            "level": "DEBUG",
+            "formatter": "f_fmt",
+            "filename": "md_logging_log.log",
+            "mode": "a"
+        }
+    },
+    "loggers": {
+        "__main__": {
+            "level": "DEBUG",
+            "handlers": ["s_hdl","f_hdl"],
+            "propagate": true
+        }
+    }
+}

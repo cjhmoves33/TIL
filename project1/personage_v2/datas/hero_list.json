@@ -1,0 +1,56 @@
+{
+    "angela":{
+
+        "name":"Angela",
+        "ref":"angela-peraltas-175th-birthday",
+        "loc":[19.434061738260745, -99.1310102045994],
+        "img":"angela.png"
+
+    },
+
+    "shusaku arakawas":{
+
+        "name":"Shusaku Arakawas",
+        "ref":"shusaku-arakawas-85th-birthday",
+        "loc":[35.14860718192263, 136.9187341556803],
+        "img":"shusaku.png"
+        
+    },
+
+    "venezuela independence day":{
+
+        "name":"Venezuela Independence Day",
+        "ref":"venezuela-independence-day-2021",
+        "loc":[7.010322324947156, -66.32159159365852],
+        "img":"venezuela-independence-day.gif"
+
+    },
+
+    "algeria independence day":{
+
+        "name":"Algeria Independence Day",
+        "ref":"algeria-independence-day-2021",
+        "loc":[28.510374360905587, 3.0254914232030052],
+        "img":"algeria-independence-day.gif"
+
+    },
+
+    "maliheh afnan":{
+
+        "name":"maliheh afnan",
+        "ref":"celebrating-maliheh-afnan",
+        "loc":[32.7951787349065, 34.98808837052857],
+        "img":"maliheh-afnan.png"
+
+    },
+
+    "united states independence day":{
+
+        "name":"united states independence day",
+        "ref":"fourth-of-july-2021",
+        "loc":[39.5234898789623, -101.339310136621],
+        "img":"us-independence-day.gif"
+
+    }    
+}
+
