@@ -51,6 +51,7 @@
       // container.scroll = () => {
       //   normal.textContent = +normal.textContent + 1;
       // }
+
       container.addEventListener('scroll', () => {
         normal.textContent = ++normalCount;
       });
@@ -59,6 +60,8 @@
         throttle.textContent = ++throttleCount;
       }, 500));
 
+      // 스토틀 방식은 쉽게생각하면 이벤트가 아주 짧은 시간내에 반복적으로 발생할 때 이미 등록된 이벤트가 있으면 그 이벤트가 발생하기전까지는
+      // 중복으로 이벤트가 누적되지 않게 하는 것이다.
 
     </script>
 </body>
