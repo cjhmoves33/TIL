@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <style>
+        a:visited {
+            color:unset;
+        }
+        a:hover {
+            color: orange;
+        }
+        a:active {
+            color: cadetblue;
+        }
+    </style>
+    
+</head>
+<body>
+    <p>hello everybody</p>
+    <ul>
+        <script>
+            const myList = ["the one", "two", "THre"]
+            for(i=0; i < myList.length; i++){
+                document.write("<li><a href='https://www.google.com/search?q="+myList[i]+"'>" + myList[i] + "</a></li>")
+            }
+        </script>
+    </ul>
+    <input id="night-day" type="button" value="night" onclick="nightDayChange(this)">
+    <script src="buttonColor.js"></script>
+</body>
+</html>
