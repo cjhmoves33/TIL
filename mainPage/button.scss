@@ -1,0 +1,29 @@
+.buttons {
+  animation: buttonAppear 3s;
+  position: relative;
+  outline: none;
+  border: none;
+  border-radius: 1.5rem;
+
+  @keyframes buttonAppear {
+    0% {
+      bottom: 10px;
+      opacity: 0%;
+    }
+    80% {
+      bottom: 10px;
+      opacity: 0%;
+    }
+    100% {
+      bottom: 0px;
+      opacity: 100%;
+    }
+  }
+
+  transition: box-shadow 0.5s;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  }
+}
