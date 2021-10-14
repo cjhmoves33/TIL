@@ -1,0 +1,1 @@
+Pickle, path, log 활용
