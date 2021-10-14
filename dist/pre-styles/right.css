@@ -1,0 +1,25 @@
+.gallery {
+  background-color: rgb(248, 249, 250);
+  display: grid;
+  padding: 1rem 2rem;
+  grid-row: span 1;
+  grid-column: -2 / -1;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(30rem, 20rem);
+  gap: 1rem;
+  overflow: scroll;
+}
+
+.gallery > .frames {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+  /* border-bottom: 2px solid rgba(0, 0, 0, 0.3); */
+}
+
+.gallery > .frames > .result {
+  width: 8rem;
+  height: 11rem;
+}
