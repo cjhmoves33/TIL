@@ -1,0 +1,13 @@
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/table.scss ***!
+  \*********************************************************************************************************/
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
