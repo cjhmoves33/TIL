@@ -14,18 +14,24 @@ const fibonacci = (num) => {
 // 재귀를 둘로 나눠서 한다고 반드시 연산량이 급증하는 것을 의미하지는 않는다. 그치만 이 경우에는 매우 비효율 적인것은 확실하다.
 // 클로저를 이용해서 메모이제이션을 해보자.
 
-const fibonacciMemo = (num) => {
+const fibonacciMemo = () => {
   const memory = {};
-  return (num) => {
+  const rec = (num) => {
     if(num < 2) return num;
     else {
-      const save1 = memory[num - 1] || fibonacciMemo(num - 1);
-      const save2 = memory[num - 2] || fibonacciMemo(num - 2);
+      const save1 = memory[num - 1] || rec(num - 1);
+      const save2 = memory[num - 2] || rec(num - 2);
       const result = save1 + save2;
       memory[num] = result;
       console.log(save1, save2, result);
-      return result;
+      return memory[num];
     }
   }
+  return rec;
 }
-const niceFibonacci = fibonacciMemo(42);
+const niceFibonacci = fibonacciMemo();
+niceFibonacci(43);
+console.log('---------------------')
+niceFibonacci(43);
+
+// * 똑같은 값을 가지는 피보나치 함수를 두번 실행 했을 때 두번째 호출시에는 이미 가진 값을 memory에서 찾을 수 있기 때문에 추가적인 연산이 발생하지 않는다.
