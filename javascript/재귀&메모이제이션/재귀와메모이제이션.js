@@ -17,7 +17,7 @@ const fibonacci = (num) => {
 const fibonacciMemo = () => {
   const memory = {};
   const rec = (num) => {
-    if(num < 2) return num;
+  if(num < 2) return num;
     else {
       const save1 = memory[num - 1] || rec(num - 1);
       const save2 = memory[num - 2] || rec(num - 2);
