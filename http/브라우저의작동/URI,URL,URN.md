@@ -9,7 +9,8 @@
 ```
 구분                            명칭                                설명
 file://, http://, https://    scheme                           통신 프로토콜
-127.0.0.1, www.abc.com        hosts         웹 페이지, 이미지, 동영상 등의 파일이 위치한 웹서버, 도메인 또는 IP
+127.0.0.1, abc.com            hosts         웹 페이지, 이미지, 동영상 등의 파일이 위치한 웹서버, 도메인 또는 IP
+www, mail, blog               subdomain
 :80, :443, :3000              port                      웹 서버에 접속하기 위한 통로
 /search,                      url-path   웹 서버의 루트 디렉토리부터 웹페이지, 이미지, 동영상 등의 파일이 위치까지의 경로
 / Users/username/Desktop
