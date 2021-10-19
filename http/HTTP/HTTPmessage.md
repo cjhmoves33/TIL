@@ -3,6 +3,8 @@ https://developer.mozilla.org/ko/docs/Web/HTTP/Messages 참고
 # HTTP
 
 - HTTP는 html과 같은 문서를 전송하기 위한 응용(어플리케이션)계층 프로토콜이다. http는 웹 브라우저와 웹 서버의 소통을 위해 디자인되었다. 전통적인 클라이언트-서버 모델에서 클라이언트가 http messages양식에 맞춰 요청을 보내면, 서버도 http messages 양식에 맞춰 응답한다. http는 특정 상태를 유지하지 않는다는 특징이있다.
+- HTML, TEXT, IMAGE, 음성, 영상, 파일, Json, XML(API), 서버간 데이터를 주고받을 때도 대부분 HTTP사용 거의 모든 형태의 데이터 전송가능
+
 - HTTP의 특징: Stateless(무상태성)
 
 ## HTTP messages
