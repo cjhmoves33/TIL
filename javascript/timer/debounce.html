@@ -19,20 +19,32 @@
         timerId = setTimeout(callback, delay, e);
       }
     }
-
-    input.oninput = debounce((e) => {
-      msg.textContent = e.target.value;
-      console.log('oninput')
-    }, 1000)
-
     // input.onchange = debounce((e) => {
     //   msg.textContent = e.target.value;
     //   console.log('onchange')
     // }, 1000)
 
+    input.oninput = debounce((e) => {
+      msg.textContent = e.target.value;
+    }, 2000)
+
+    // 디바운스와 스로틀 모두 클로저를 활용한 케이스다.
+    // oninput이벤트가 발생할 때마다 debounce를 호출한 결과를 입력받게 되는데, timerId라는 변수를 기억하는 함수를 입력받게 된다.
+    // 이벤트가 발생하면 전달받은 함수를 이벤트리스너가 실행시키게되고 그 함수 안에서 setTimeOut을 호출 하게 되는데 setTimeOut의 인자는 콜백, 딜레이시간, 그 뒤론 콜백에 들어갈 인자들이다.
+    // 여기서 꼭 기억해야 하는 부분은 결국 oninput이벤트리스너가 실행시키게 되는 함수는 debounce가 리턴해주는 함수라는 것이다. 그 함수는 e를 인자로 받는데 oninput의 정보가 여기 들어가는 것이다.
+    // 그럼 클로저가 발생한 함수를 이벤트리스너가 실행시키게 되는 것이고 이벤트 최초발생을 기준으로 timerId식별자에 타이머의 아이디 값이 들어가게된다.
+    // 클로저는 함수와 함수가 정의된 렉시컬환경의 조합이다. 그 일부가 변수 timerId 가 되는것이고 여기에는 최초발생때 타이머 아이디가 들어가게된다.
+    // 여기서 이벤트가 짧은 주기로 연속해서 일어나면 어떻게 될까? 여기서는 콜백이 2000ms후에 발생하게 되는데 이벤트가 연속적으로 발생하게되면 계속 콜백을 부르게된다.
+    // 콜백의 if부분을보면 timerId(타이머의 id값이 지정되있으면)가 있으면 타이머를 없애고 다시 시작한다.
+    // 즉, 사실상 콜백이 실행되지 않고 타이머를 세고있던 콜백을 없앤 뒤 새로운 콜백을 다시 등록하게 되는 것이다.
+    // 만약 연속적으로 이벤트가 계속 발생한다면 콜백은 계속해서 초기화 될 것이고 2000ms이상의 텀이 발생하거나 2000ms이 지난후에도 이벤트가 발생하지않는다면 그제서야 콜백이 처음으로 호출된다.
+
+    // 여기서 간단하게 게시글 자동저장 기능을 구현해봤다.(자동저장이라고 하기에는 너무 볼품없지만 디바운스의 개념은 이해했다.)
+
     // 여기서 input의 oninput과 onchange의 차이를 알 수 있다.
     // onchange의 경우 input의 focus가 풀려야지 onchange가 발생하기 시작함. 즉 입력마다 이벤트 발생이아닌 포커스 유무에 따라 이벤트 발생.
     // oninput의 경우 input의 focus가 유지중이여도 입력이 생기면 oninput이 발생함. 즉 입력마다 이벤트 발생
+    // 네이티브 html인 경우에는 onchange와 oninput가 다르지만 리액트에서는 onchange가 focus유무와 상관없이 값이 입력될 때 마다 발생한다.
   </script>
 </body>
 </html>
