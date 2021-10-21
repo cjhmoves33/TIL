@@ -23,7 +23,7 @@
       if(xhr.status === 200 || xhr.status === 201) {
         document.querySelector('pre').textContent = xhr.response;
       } else {
-        console.log('Err!', xhr.status, xhr.statusText);
+        console.log('이미 데이터가 존재함!', xhr.status, xhr.statusText);
       }
     }
   </script>
