@@ -1,19 +1,19 @@
-const promise = new Promise();
-promise.then(result => result);
+const promise = new Promise((resolve, reject) => {resolve()});
+// promise.then(result => result);
 
 async function main() {
-  const result = await promise();
+  const result = await promise;
 }
 main();
 
 // * 예전에는 await로 프로미스를 호출하기 위해서 async함수를 만들고 그안에서 await를 호출하고 그 함수를 호출하는 형식으로 했어야 했지만 현재는 top level await라는게 생기면서
 // * 단독으로도 사용이 가능하다.
 
-const result = await promise();
-// 이게 가능함.
+// const result = await promise();
+// top level await라는 것이 있지만 사용법을 모르겠다.
 
 async function main2() {
-  const result = await promise();
+  const result = await promise;
   // return 'hi'
   return result;
 }
@@ -21,12 +21,12 @@ async function main2() {
 
 main2().then(some => some);
 // 아니면
-const some = await main2();
+// const some = await main2();
 
 
 async function main3() {
   try {
-    const result = await promise();
+    const result = await promise;
     return result;
   } catch (err) {
     console.log(err);
@@ -42,7 +42,7 @@ main3().then(some => some);
 const promise1 = Promise.resolve('success1');
 const promise2 = Promise.resolve('success2');
 (async () => {
-  for await (promise of [promise1, promise2]) {
+  for await (prom of [promise1, promise2]) {
     console.log(promise);
   }
 })();
