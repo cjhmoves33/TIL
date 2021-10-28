@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://localhost:6006/iframe.html?id=example-toggle-%2Dprimary&viewMode=story -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"><!--<base target="_parent">--><base href="." target="_parent"><style>:not(.sb-show-main) > .sb-main,
+  :not(.sb-show-nopreview) > .sb-nopreview,
+  :not(.sb-show-errordisplay) > .sb-errordisplay {
+    display: none;
+  }
+
+  .sb-show-main.sb-main-centered {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .sb-show-main.sb-main-centered #root {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1rem;
+    max-height: 100%; /* Hack for centering correctly in IE11 */
+  }
+
+  /* Vertical centering fix for IE11 */
+  @media screen and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .sb-show-main.sb-main-centered:after {
+      content: '';
+      min-height: inherit;
+      font-size: 0;
+    }
+  }
+
+  .sb-show-main.sb-main-fullscreen {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .sb-show-main.sb-main-padded {
+    margin: 0;
+    padding: 1rem;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .sb-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: auto;
+  }
+
+  .sb-heading {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 10px 0;
+    padding-right: 25px;
+  }
+
+  .sb-nopreview {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .sb-nopreview_main {
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.03);
+  }
+
+  .sb-nopreview_heading {
+    text-align: center;
+  }
+
+  .sb-errordisplay {
+    border: 20px solid rgb(187, 49, 49);
+    background: #222;
+    color: #fff;
+    z-index: 999999;
+  }
+
+  .sb-errordisplay_code {
+    padding: 10px;
+    background: #000;
+    color: #eee;
+    font-family: "Operator Mono", "Fira Code Retina", "Fira Code", "FiraCode-Retina", "Andale Mono", "Lucida Console", Consolas, Monaco, monospace;
+  }
+
+  .sb-errordisplay pre {
+    white-space: pre-wrap;
+  }</style><script>/* globals window */
+  /* eslint-disable no-underscore-dangle */
+  try {
+    if (window.top !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.top.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.top.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+      window.top.__VUE_DEVTOOLS_CONTEXT__ = window.document;
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('unable to connect to top frame for connecting dev tools');
+  }
+
+  window.onerror = function onerror(message, source, line, column, err) {
+    if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;
+    // eslint-disable-next-line no-var, vars-on-top
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('POST', '/runtime-error');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(
+      JSON.stringify({
+        /* eslint-disable object-shorthand */
+        message: message,
+        source: source,
+        line: line,
+        column: column,
+        error: err && { message: err.message, name: err.name, stack: err.stack },
+        origin: 'preview',
+        /* eslint-enable object-shorthand */
+      })
+    );
+  };</script><style>#root[hidden],
+      #docs-root[hidden] {
+        display: none !important;
+      }</style><style data-styled="active" data-styled-version="5.2.3">.cCMaia{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.ibSevY{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;background-color:'gray';height:100%;width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.fbZqKh{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.bFpEVI{position:relative;margin-top:8rem;left:47%;cursor:pointer;}.bFpEVI > .toggle-container{width:50px;height:24px;border-radius:30px;background-color:#8b8b8b;}.bFpEVI > .toggle-circle{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background-color:#ffffff;}.XvlwL{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.cCUArj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;background-color:gray;height:100%;width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.kCTQcm{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.iHVsXw{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.jdxuQe{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;background-color:gray;height:100%;width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.gTEFvq{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.kQGNqY{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.hgBcXg{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.bNfAer{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.iBOCXP{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.gQRdsR{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.kYuwmr{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.fCfnDT{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.cXoXvZ{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;background-color:gray;height:100%;width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.fdrQVY{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.qXGdH{width:50vh;height:50vh;background-color:tomato;}.gCFPcE{width:100vh;height:100vh;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.dFwmmq{background-color:#4000c7;-webkit-text-decoration:none;text-decoration:none;border:none;padding:20px;color:white;border-radius:30px;cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.lnfZvB{position:relative;margin-top:8rem;left:47%;cursor:pointer;}.lnfZvB > .toggle-container{width:50px;height:24px;border-radius:30px;background-color:#8b8b8b;}.lnfZvB > .toggle-circle{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background-color:#ffffff;}</style><script charset="utf-8" src="./main.ab160860de8a62fe8d9f.hot-update.js"></script><script charset="utf-8" src="./main.f25b185f3a48ba6237ed.hot-update.js"></script><script charset="utf-8" src="./main.6a0c3ad83c0e84e459ae.hot-update.js"></script><script charset="utf-8" src="./main.e288abf77d4f4918bfb1.hot-update.js"></script><script charset="utf-8" src="./main.f9c92b7ae5057aac63ae.hot-update.js"></script><script charset="utf-8" src="./main.978ae781aad1b2d3fb4e.hot-update.js"></script><script charset="utf-8" src="./main.00d0c5eafc84d3146999.hot-update.js"></script><script charset="utf-8" src="./main.7d518d36e419641dee14.hot-update.js"></script></head><body class="sb-show-main sb-main-padded"><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"><div class="sc-jcFkyM lnfZvB"><div class="toggle-container"></div><div class="toggle-circle"></div></div></div><div id="docs-root"></div><script>window['LOGLEVEL'] = "info";
+            
+        
+            
+              window['FRAMEWORK_OPTIONS'] = {};
+            
+        
+            
+              window['FEATURES'] = {"postcss":true};</script><script src="./runtime_main.iframe.bundle.js"></script><script src="./vendors_main.iframe.bundle.js"></script><script src="./main.iframe.bundle.js"></script></body></html>
