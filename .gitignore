@@ -1,2 +1,6 @@
 .vscode/
 .DS_*
+
+node_modules/
+package-lock.json
+package.json
