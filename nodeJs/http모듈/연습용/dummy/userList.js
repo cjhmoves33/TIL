@@ -8,7 +8,7 @@ module.exports = [
   {
     name: 'vung',
     age: 26,
-    state: 'perpect',
+    state: 'perfect',
     introduce: 'i am KING!'
   }
 ]

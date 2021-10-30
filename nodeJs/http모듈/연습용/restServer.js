@@ -4,6 +4,8 @@ const fs = require('fs').promises;
 const PORT = 5000;
 const HOST = 'localhost';
 
+const currentUserTemp = [];
+
 const app = http.createServer(async (req, res) => {
   try{
     console.log(`request method is ${req.method}, url is ${req.url}`);
@@ -34,6 +36,29 @@ const app = http.createServer(async (req, res) => {
         // res.write(Buffer.alloc(userListToString.length, userListToString));
         // res.write(Buffer.from(userListToString));
         return res.end();
+
+      } else if(req.url === '/register') {
+        const registerPage = await fs.readFile('./register.html');
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        return res.end(registerPage);
+      }
+    } 
+    if(req.method === 'POST') {
+      console.log(currentUserTemp);
+      if(req.url === '/register') {
+        const dataBox = [];
+        req.on('data', chunk => {
+          dataBox.push(chunk);
+          currentUserTemp.push(JSON.parse(chunk));
+        })
+        .on('end', () => {
+          res.writeHead(201, {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+          });
+          return res.end(Buffer.concat(dataBox));
+        })
+        return;
       }
     }
     // ? 요청 주소가 / 도아니고 /about도 아닌것들(index.html을 보면 알 수 있듯이 html내 script또는 css는 GET요청을 따로 보낸다.)
@@ -41,6 +66,8 @@ const app = http.createServer(async (req, res) => {
       const data = await fs.readFile(`.${req.url}`);
       return res.end(data);
     } catch (err) {
+      console.log('오류난 요청: ', req.method)
+      console.log('오류난 url: ', req.url)
       console.error(err);
     }
     res.writeHead(404);

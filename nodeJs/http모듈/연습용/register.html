@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input {
+      width: 150px;
+    }
+    textarea {
+      width: 300px;
+    }
+    button {
+      margin-top: 30px;
+      width: 80px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <title>등록기</title>
+</head>
+<body>
+  <h1>여기는 유저 등록기입니다.</h1>
+  <form id='register-form'>
+    <label for='name'>이름</label>
+    <input name="name" id='name' type="text" required autofocus>
+
+    <label for='age'>나이</label>
+    <input name='age' id='age' type="text" required >
+
+    <label for='status'>상태</label>
+    <input name='status' id='status' type="text" required>
+
+    <label for='introduce'>소개</label>
+    <textarea name='introduce' id='introduce' type="text" required> </textarea>
+
+    <button>등록</button>
+  </form>
+  <br>
+  <a href="/">HOME</a>
+  <script src="./register.js"></script>
+</body>
+</html>
