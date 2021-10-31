@@ -8,12 +8,18 @@ const register = (url, info) => {
       'Content-Type': 'application/json; charset=utf-8'
     },
     body: JSON.stringify(info)
-  }).catch(err => console.log(err));
+  })
+  .catch(err => console.log(err));
 }
 
 registerForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const dataList = [e.target.name.value, e.target.age.value, e.target.status.value, e.target.introduce.value];
-  const postData = await register(registerUrl, dataList);
-
+  const formData = {
+    name: e.target.name.value, 
+    age: e.target.age.value,
+    status: e.target.status.value,
+    introduce: e.target.introduce.value
+  };
+  const postData = await register(registerUrl, formData);
+  // console.log(postData);
 })
