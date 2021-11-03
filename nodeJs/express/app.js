@@ -1,5 +1,7 @@
 const path = require('path');
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
 // const PORT = 5001;
 
@@ -11,6 +13,10 @@ app.set('port', process.env.PORT || 5001);
 // ? app.set은 첫번째 인자(name)를 일종의 서버 전역변수(전역프로퍼티)처럼 사용할 수 있다.
 // ? app.listen에서 app.get('port')를 사용해서 port에 담은 5001을 불러왔음을 확인할 수 있다.
 
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // queryString을 파싱할 수 있게 도와준다.
+
 app.use((req, res, next) => {
   // res.send('/category 경로에 params로 요청받았다.');
   // * res.send를 명시적으로 호출한 뒤에는 다음 미들웨어로 넘어가지 않게 해야한다. http에서 req.end와 같음.
@@ -20,6 +26,7 @@ app.use((req, res, next) => {
   // ? 미들웨어 함수에서 next를 명시적으로 호출해줘야 해당하는 라우터를 찾고 그 미들웨어 함수를 실행시킨다.
   }, // err // ! 여기서 에러 발생 코드 입력.
 ); 
+
 app.get('/',(req, res, next) => {
   console.log('하나');
   next();
