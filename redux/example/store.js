@@ -67,6 +67,8 @@ const rootReducer = combineReducers({
   nameModifier
 })
 const store = createStore(rootReducer);
+// * createStore에는 미들웨어를 인자로 줄 수 있는데, redux-logger, redux-thunk등이 있다.
+// * redux-thunk는 리듀서에서 비동기처리를 할 수 있게 도와준다.
 
 // console.log(store)
 console.log(store.getState());
