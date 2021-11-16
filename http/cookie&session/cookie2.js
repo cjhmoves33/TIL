@@ -32,7 +32,7 @@ http.createServer(async (req, res) => {
     // *[HttpOnly -mdn-] Cross-site 스크립팅(XSS) 공격을 방지하기 위해, HttpOnly쿠키는 JavaScript의 Document.cookie API에 접근할 수 없다.
     // * 서버에게 전송되기만 합니다. 예를 들어, 서버 쪽에서 지속되고 있는 세션의 쿠키는 JavaScript를 사용할 필요성이 없기 때문에 HttpOnly플래그가 설정될 것이다.
     // * Secure는 HTTPS에서만 쿠키가 전송되게 한다.
-    // * Domain, Path 디렉티브는 쿠키의 스코프를 정의한다. 어떤 URL에 쿠키를 보냐야하는지.
+    // * Domain, Path 디렉티브는 쿠키의 스코프를 정의한다. 어떤 URL에 쿠키를 보내야하는지.
     // * Path는 Cookie 헤더를 전송하기 위하여 요청되는 URL 내에 반드시 존재해야하는 URL경로다.
     // Path='docs'이 설정된다면, /docs, /docs/web, /docs/web/Http 등에서 모두 매치가 된다.
     // Expires를 설정하지않으면 세션쿠키가 된다.

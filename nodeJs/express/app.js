@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 dotenv.config();
+const cookieParser = require('cookie-parser');
+
 const app = express();
 // const PORT = 5001;
 
@@ -20,10 +22,12 @@ app.use(morgan('dev'));
 // app.use(morgan('combined'));
 // ? morgan은 서버로의 요청에대한 정보를 console에 찍어준다. 개발시에는 보통 dev, short를 사용하고 배포시에는 보통 common이나 combined를 사용한다.
 // ? combined로 설정하면 시간, IP, 브라우저 정보 등을 확인할 수 있다.
-
+app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // queryString을 파싱할 수 있게 도와준다.
-
+// ? express.json()은 클라이언트에서 JSON형태로 보낸 데이터를 파싱한 후 req.body로 넣어준다.
+app.use(express.urlencoded({ extended: true })); // extended: true/false true는 qs모듈을 사용하고, false는 queryString 내장모듈을 사용하는데 qs모듈이 더 좋다.
+//  extended: true는 객체안의 중첩된 객체를 허용한다는 의미. 
+// ? express.urlencoded()는 form데이터를 파싱해준다.
 app.use((req, res, next) => {
   // res.send('/category 경로에 params로 요청받았다.');
   // * res.send를 명시적으로 호출한 뒤에는 다음 미들웨어로 넘어가지 않게 해야한다. http에서 req.end와 같음.
@@ -58,7 +62,30 @@ app.get('/', (req, res, next) => {
   // next();
   // * app.get, post, put 등에 들어가는 함수도 하나이 미들웨어 함수다. 즉 next를 호출한다면 같은 경로의 같은 http요청에 해당하는 
   // * 함수가 있다면 실행 시킬 수 있다는 것.
+
+  // app.use(cookieParser())로 쿠키파서 모듈을 사용하면 req.cookies로 미들웨어에서 쿠키를 받을 수 있다.
+  req.cookies // { mycookie: 'test' } 
+  // TIL/http/cookie&session/cookie2.js에서는
+  // res.writeHead(302, {
+    // Location: '/',
+    // 'Set-Cookie': `name=${encodeURIComponent(name)}; Expires=${expires.toGMTString()}; HttpOnly; Path=/`
+  // })
+  // 이렇게 헤더를 설정할 때 문자열로 하나하나 찍어줬지만 express에서는
+  const expires = new Date();
+  expires.setMinutes(expires.getMinutes() + 1);
+  res.cookie('myname', encodeURIComponent('바보'), {
+    expires: expires,
+    httpOnly: true,
+    path: '/'
+  })
+  console.log(decodeURIComponent(req.cookies.myname)); // req.cookies로 간단하게 쿠키를 파싱할 수 있다. 한글은 decodeURIComponent로 별도 파싱.
+  res.clearCookie('myname', encodeURIComponent('바보'), {
+    httpOnly: true,
+    path: '/'
+  })
 });
+
+
 // app.get('/', (req, res) => {
 //   console.log('왜 실행이 안되는거야.'); // 위에서 next호출 시 실행되는 것을 확인할 수 있다.
 // })
