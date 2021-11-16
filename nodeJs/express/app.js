@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
 // const PORT = 5001;
 
@@ -14,6 +15,12 @@ app.set('port', process.env.PORT || 5001);
 // ? app.listen에서 app.get('port')를 사용해서 port에 담은 5001을 불러왔음을 확인할 수 있다.
 
 app.use(morgan('dev'));
+// app.use(morgan('short'));
+// app.use(morgan('common'));
+// app.use(morgan('combined'));
+// ? morgan은 서버로의 요청에대한 정보를 console에 찍어준다. 개발시에는 보통 dev, short를 사용하고 배포시에는 보통 common이나 combined를 사용한다.
+// ? combined로 설정하면 시간, IP, 브라우저 정보 등을 확인할 수 있다.
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // queryString을 파싱할 수 있게 도와준다.
 
@@ -25,7 +32,7 @@ app.use((req, res, next) => {
   next();
   // ? 미들웨어 함수에서 next를 명시적으로 호출해줘야 해당하는 라우터를 찾고 그 미들웨어 함수를 실행시킨다.
   }, // err // ! 여기서 에러 발생 코드 입력.
-); 
+);
 
 app.get('/',(req, res, next) => {
   console.log('하나');
