@@ -22,12 +22,20 @@ app.use(morgan('dev'));
 // app.use(morgan('combined'));
 // ? morgan은 서버로의 요청에대한 정보를 console에 찍어준다. 개발시에는 보통 dev, short를 사용하고 배포시에는 보통 common이나 combined를 사용한다.
 // ? combined로 설정하면 시간, IP, 브라우저 정보 등을 확인할 수 있다.
+
+app.use('/', express.static(path.join(__dirname, 'public-1212')));
+// ? 공식문서에 따르면 express.static은 req.url과 제공된 root디렉토리(지금은 path.join(__dirname, 'public-1212'))
+// ? 를 결합해서 전송할 파일을 찾는다고한다.
+// * 또한 미들웨어는 순서가 중요한데 express.static의 위치는 morgan보다는 밑, 또는 cookieParser의 밑이 괜찮다.
+
 app.use(cookieParser());
 app.use(express.json());
 // ? express.json()은 클라이언트에서 JSON형태로 보낸 데이터를 파싱한 후 req.body로 넣어준다.
+
 app.use(express.urlencoded({ extended: true })); // extended: true/false true는 qs모듈을 사용하고, false는 queryString 내장모듈을 사용하는데 qs모듈이 더 좋다.
 //  extended: true는 객체안의 중첩된 객체를 허용한다는 의미. 
 // ? express.urlencoded()는 form데이터를 파싱해준다.
+
 app.use((req, res, next) => {
   // res.send('/category 경로에 params로 요청받았다.');
   // * res.send를 명시적으로 호출한 뒤에는 다음 미들웨어로 넘어가지 않게 해야한다. http에서 req.end와 같음.
