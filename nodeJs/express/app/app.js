@@ -87,7 +87,7 @@ app.get('/', (req, res, next) => {
     path: '/'
   })
   console.log(decodeURIComponent(req.cookies.myname)); // req.cookies로 간단하게 쿠키를 파싱할 수 있다. 한글은 decodeURIComponent로 별도 파싱.
-  res.clearCookie('myname', encodeURIComponent('바보'), {
+  res.clearCookie('myname', {
     httpOnly: true,
     path: '/'
   })
