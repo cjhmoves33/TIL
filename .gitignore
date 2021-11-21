@@ -1,6 +1,10 @@
 .vscode/
 .DS_*
+
 .env
+config.json
+
+config/
 
 node_modules/
 package-lock.json
