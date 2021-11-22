@@ -1,6 +1,7 @@
 .vscode/
 .DS_*
 
+.pem
 .env
 config.json
 
