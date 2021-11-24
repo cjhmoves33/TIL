@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>multipart</title>
+</head>
+<body>
+  <form action="http://localhost:8081/upload" method="post" enctype="multipart/form-data" style="width: 30vw; margin: 20px; display: flex; flex-direction: column;">
+    <input type="file" name="image" />
+    <br>
+    <label for="title">파일명</label>
+    <input type="text" name="title" id="title"/>
+    <br>
+    <button type="submit"> 업로드 버튼 </button>
+  </form>
+</body>
+</html>
