@@ -32,8 +32,12 @@ try {
   fs.mkdir('./uploads');
 }
 
-app.post('/upload', (req, res) => {
-  console.log(req)
+app.post('/upload', upload.single('image'), (req, res) => {
+  // 파일을 하나만 업로드 하는 경우 single미들웨어를 사용할 수 있다.
+  // single미들웨어를 라우터 미들웨어 앞에두면, multer설정에 따라 파일 업로드 후 req.file객체가 생성된다.
+  // 인수는 input 태그의 name이나 폼 데이터의 키와 일치하게 넣으면 된다.
+  console.log(req.file); // file의 데이터는 req.file에 담기고
+  console.log(req.body); // req.body에는 파일이 아닌 데이터인 title이 담겨있다.(파일이 아닌 데이터는 req.body로 간다.)
 })
 
 app.listen(8081, () => console.log('8081 start'));
