@@ -6,10 +6,10 @@
 </head>
 <body>
   <form action="http://localhost:8081/upload" method="post" enctype="multipart/form-data" style="width: 30vw; margin: 20px; display: flex; flex-direction: column;">
-    <input type="file" name="image" />
+    <input type="file" name="avatars" multiple/>
     <br>
-    <label for="title">파일명</label>
-    <input type="text" name="title" id="title"/>
+    <label for="titleName">파일명</label>
+    <input type="text" name="titleName" id="titleName"/>
     <br>
     <button type="submit"> 업로드 버튼 </button>
   </form>
