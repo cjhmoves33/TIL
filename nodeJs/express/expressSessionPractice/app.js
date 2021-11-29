@@ -20,7 +20,7 @@ app.use(session({
   cookie: {
     maxAge: 60000,
     httpOnly: true,
-  }
+  },
 }));
 
 app.get('/', (req, res, next) => { 

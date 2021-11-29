@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
+// design tool
+import { Menu } from 'antd';
+
 const AppLayout = ({ children }) => {
   // * props.children은 AppLayout컴포넌트가 사용될 때
   // * <AppLayout>
@@ -11,12 +14,18 @@ const AppLayout = ({ children }) => {
   // 다른 컴포넌트가 들어오는 등 다양하다.
   // * </AppLayout>
   return (
-    <React.Fragment>
-      <Link href='/'><a>노드버드  </a></Link>
-      <Link href='/profile'><a>프로필  </a></Link>
-      <Link href='/signup'><a>회원가입</a></Link>
+    <Menu mode='horizontal'>
+      <Menu.Item>
+        <Link href='/'><a>노드버드 </a></Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link href='/'><a>노드버드 </a></Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link href='/signup'><a>회원가입</a></Link>
+      </Menu.Item>
       {children}
-    </React.Fragment>
+    </Menu>
   )
 }
 
