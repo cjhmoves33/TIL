@@ -1,10 +1,12 @@
-import AppLayout from '../components/AppLayout';
+// const StyledDiv = styled.div`
+//   display: flex;
+// `
+
+import React from 'react';
 
 const Home = () => {
   return (
-    <AppLayout>
-      <div>Hello Nest.js!</div>
-    </AppLayout>
+    <div>Hello Nest.js!</div>
   )
 }
 
