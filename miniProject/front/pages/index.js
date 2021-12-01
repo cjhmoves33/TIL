@@ -1,7 +1,3 @@
-// const StyledDiv = styled.div`
-//   display: flex;
-// `
-
 import React from 'react';
 
 const Home = () => {

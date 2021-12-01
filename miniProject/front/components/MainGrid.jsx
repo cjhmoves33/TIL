@@ -10,8 +10,8 @@ const StyledCol = styled(Col)`
 const MainGrid = ({ children }) => {
   return(
     <Row>
-      <StyledCol xs={24} md={16} >{children[0]}</StyledCol>
-      <StyledCol xs={0} md={8} >{children[1]}</StyledCol>
+      <StyledCol>{children}</StyledCol>
+      {/* <StyledCol xs={0} md={8} >{children[1]}</StyledCol> */}
     </Row>
   )
 }

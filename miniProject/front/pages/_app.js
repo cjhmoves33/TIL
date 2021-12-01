@@ -7,7 +7,8 @@ import 'antd/dist/antd.css';
 
 import { Row, Col } from 'antd';
 import AppLayoutLeft from '../components/AppLayoutLeft';
-import AppLayoutTop from '../components/AppLayoutTop';
+import AppLayoutCenter from '../components/AppLayoutCenter';
+import AppLayoutRight from '../components/AppLayoutRight';
 
 // * 내부에 컴포넌트가 있다면 전부 실행하고 html의 body로 구성됨.
 // * props로 받은 Component는 요청한 페이지다. GET / 요청을 보냈다면, Component에는 /pages/index.js 파일이 props로 내려오게됨.
@@ -21,15 +22,18 @@ const MyApp = ({ Component }) => {
         <title>NodeBird</title>
       </Head>
       <Row>
-      <Col md={3}>
-        <AppLayoutLeft/>
-      </Col>
-      <Col md={21}>
-        <AppLayoutTop>
-          <Component/>
-        </AppLayoutTop>
-      </Col>
-    </Row>  
+        <Col xs={4} sm={3} md={3} lg={3}>
+          <AppLayoutLeft/>
+        </Col>
+        <Col xs={20} sm={21} md={21} lg={13}>
+          <AppLayoutCenter>
+            <Component/>
+          </AppLayoutCenter>
+        </Col>
+        <Col xs={0}lg={8}>
+          <AppLayoutRight/>
+        </Col>
+      </Row>  
     </>
   )
 }
