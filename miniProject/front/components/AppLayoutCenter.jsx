@@ -9,7 +9,7 @@ import styled from 'styled-components';
 // components
 import MainGrid from './MainGrid';
 
-const StyledCenter = styled.div`
+export const StyledCenter = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -17,7 +17,7 @@ const StyledCenter = styled.div`
   align-items: center;
   border-right: #ebebeb solid 1px;
 `
-const Header = styled.div`
+export const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

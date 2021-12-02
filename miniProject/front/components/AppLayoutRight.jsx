@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { StyledCenter, Header } from './AppLayoutCenter';
+
 const AppLayoutRight = () => {
   return (
-    <div>오른쪽 페에지</div>
+    <StyledCenter>
+      <Header>
+        오른쪽 페에지
+      </Header>
+    </StyledCenter>
   )
 }
 
