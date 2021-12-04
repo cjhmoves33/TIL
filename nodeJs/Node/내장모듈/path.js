@@ -22,3 +22,15 @@ console.log(absolutePath)
 console.log(path.delimiter)
 // * 환경 변수의 구분자. process.env.PATH를 입력하면 여러개의 경로가 이 구분자로 구분되어 있다.
 // * windows는 세미콜론이고, POSIX는 콜론이다.
+
+
+
+// * [내용 추가]
+// path.join()
+// path.resolve()
+// 이 둘은 명백한 차이점이 있는데, path.join은 인자로 받은 string타입의 경로를 그냥 다 합친다.
+// path.resolve는 인자의 우측에서 부터 경로를 합치는데, '/'를 만나게되면('./', '../'랑 다름) 합치려는 경로가 절대경로라고 판단을 해서 경로 합치기를 멈추고 /를 만난곳까지 반환한다.
+// ex) path.resolve('foo/bar', '/baz/bab/', '../boo') -> 'baz/boo'
+// __dirname과 함께 써주면 __dirname과 함쳐진다.
+
+
