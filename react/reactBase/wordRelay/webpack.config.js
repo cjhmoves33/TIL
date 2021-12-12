@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const refreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 module.exports = {
   mode: 'development',
   devtool: 'eval',
