@@ -3,10 +3,12 @@
 
 .pem
 .env
+*.config.json
 config.json
+.eslint
+.eslint.*
+.babelrc
 
 config/
 
 node_modules/
-package-lock.json
-package.json

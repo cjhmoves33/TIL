@@ -1,0 +1,21 @@
+{
+  "name": "babeltest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "browserlist": ["> 1% in US", "> 1% in KR", "not dead"],
+  "dependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.16.0",
+    "@babel/preset-env": "^7.16.4"
+  }
+}
