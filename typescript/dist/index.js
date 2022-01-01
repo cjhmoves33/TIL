@@ -1,7 +1,7 @@
 // * 함수에 인자를 전부 할당하지 않을 경우
 const user = 'bok', age = 26;
 const greeter = (user, age) => {
-    console.log(`hi ${user}, you are ${age}!`);
+    console.log(`hi ${user}, you are ${age}`);
 };
 greeter(user, age);
 // greeter(user);
