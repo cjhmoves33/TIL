@@ -7,12 +7,12 @@ const testPromise = (interval) => {
 };
 
 const testAwait = async () => {
-  console.log('async함수는 기본적으로 대기상태의 Promise가 된다.');
+  console.log('async함수는 기본적으로 fulfilled 상태의 Promise를 반환한다.');
   console.log(
-    '이때 내부에서 await를 만나게되면 해당함수 내부가 동기적으로 실행되기 때문에'
+    '만약 내부에 await가 있다면 await아래 부분부터는 동기스럽게 작동하게된다.'
   );
   console.log(
-    'await로 처리중인 비동기 함수를 처리 하는동안 async함수 내부는 잠시 중단되고'
+    'await로 비동기 함수를 처리 하는동안 async함수 내부는 잠시 중단된다. 그리고 대기상태의 Promise를 반환한다.'
   );
 
   await testPromise(1000);
